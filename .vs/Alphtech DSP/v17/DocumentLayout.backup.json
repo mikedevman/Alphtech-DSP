@@ -1,0 +1,256 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6B11C462-C831-40FE-998E-E472F53EF46E}|UI\\UI\\UI.csproj|c:\\users\\admin\\documents\\alphtech dsp\\alphtech dsp\\ui\\ui\\chorusui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6B11C462-C831-40FE-998E-E472F53EF46E}|UI\\UI\\UI.csproj|solutionrelative:ui\\ui\\chorusui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B11C462-C831-40FE-998E-E472F53EF46E}|UI\\UI\\UI.csproj|c:\\users\\admin\\documents\\alphtech dsp\\alphtech dsp\\ui\\ui\\chorusui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B11C462-C831-40FE-998E-E472F53EF46E}|UI\\UI\\UI.csproj|solutionrelative:ui\\ui\\chorusui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B11C462-C831-40FE-998E-E472F53EF46E}|UI\\UI\\UI.csproj|c:\\users\\admin\\documents\\alphtech dsp\\alphtech dsp\\ui\\ui\\ampui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B11C462-C831-40FE-998E-E472F53EF46E}|UI\\UI\\UI.csproj|solutionrelative:ui\\ui\\ampui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B11C462-C831-40FE-998E-E472F53EF46E}|UI\\UI\\UI.csproj|c:\\users\\admin\\documents\\alphtech dsp\\alphtech dsp\\ui\\ui\\ampui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6B11C462-C831-40FE-998E-E472F53EF46E}|UI\\UI\\UI.csproj|solutionrelative:ui\\ui\\ampui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\alphtech dsp\\amp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|solutionrelative:alphtech dsp\\amp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\alphtech dsp\\audioprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|solutionrelative:alphtech dsp\\audioprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\alphtech dsp\\chorus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|solutionrelative:alphtech dsp\\chorus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\alphtech dsp\\audioeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|solutionrelative:alphtech dsp\\audioeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\alphtech dsp\\gain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|solutionrelative:alphtech dsp\\gain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B11C462-C831-40FE-998E-E472F53EF46E}|UI\\UI\\UI.csproj|C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\ui\\ui\\reverbui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6B11C462-C831-40FE-998E-E472F53EF46E}|UI\\UI\\UI.csproj|solutionrelative:ui\\ui\\reverbui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\alphtech dsp\\reverb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|solutionrelative:alphtech dsp\\reverb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\alphtech dsp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|solutionrelative:alphtech dsp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\alphtech dsp\\delay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D34C17CD-739A-4CC8-B46A-C9D085556150}|Alphtech DSP\\AlphtechDSP.csproj|solutionrelative:alphtech dsp\\delay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 383,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AmpUI.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\UI\\UI\\AmpUI.cs",
+              "RelativeDocumentMoniker": "UI\\UI\\AmpUI.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\UI\\UI\\AmpUI.cs [Design]",
+              "RelativeToolTip": "UI\\UI\\AmpUI.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T19:03:14.879Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AmpUI.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\UI\\UI\\AmpUI.cs",
+              "RelativeDocumentMoniker": "UI\\UI\\AmpUI.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\UI\\UI\\AmpUI.cs",
+              "RelativeToolTip": "UI\\UI\\AmpUI.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwFEAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T10:29:52.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChorusUI.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\UI\\UI\\ChorusUI.cs",
+              "RelativeDocumentMoniker": "UI\\UI\\ChorusUI.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\UI\\UI\\ChorusUI.cs",
+              "RelativeToolTip": "UI\\UI\\ChorusUI.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAA6wAoAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T10:27:06.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Amp.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\Amp.cs",
+              "RelativeDocumentMoniker": "Alphtech DSP\\Amp.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\Amp.cs",
+              "RelativeToolTip": "Alphtech DSP\\Amp.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T08:43:15.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChorusUI.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\UI\\UI\\ChorusUI.cs",
+              "RelativeDocumentMoniker": "UI\\UI\\ChorusUI.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\UI\\UI\\ChorusUI.cs [Design]",
+              "RelativeToolTip": "UI\\UI\\ChorusUI.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T10:27:04.043Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AudioProcessing.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\AudioProcessing.cs",
+              "RelativeDocumentMoniker": "Alphtech DSP\\AudioProcessing.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\AudioProcessing.cs",
+              "RelativeToolTip": "Alphtech DSP\\AudioProcessing.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T08:44:57.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Chorus.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\Chorus.cs",
+              "RelativeDocumentMoniker": "Alphtech DSP\\Chorus.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\Chorus.cs",
+              "RelativeToolTip": "Alphtech DSP\\Chorus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T08:48:22.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AudioEffect.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\AudioEffect.cs",
+              "RelativeDocumentMoniker": "Alphtech DSP\\AudioEffect.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\AudioEffect.cs",
+              "RelativeToolTip": "Alphtech DSP\\AudioEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T08:43:36.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Gain.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\Gain.cs",
+              "RelativeDocumentMoniker": "Alphtech DSP\\Gain.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\Gain.cs",
+              "RelativeToolTip": "Alphtech DSP\\Gain.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAmwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T08:49:29.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ReverbUI.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\UI\\UI\\ReverbUI.cs",
+              "RelativeDocumentMoniker": "UI\\UI\\ReverbUI.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\UI\\UI\\ReverbUI.cs [Design]",
+              "RelativeToolTip": "UI\\UI\\ReverbUI.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T18:13:18.483Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Delay.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\Delay.cs",
+              "RelativeDocumentMoniker": "Alphtech DSP\\Delay.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\Delay.cs",
+              "RelativeToolTip": "Alphtech DSP\\Delay.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T08:49:14.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Reverb.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\Reverb.cs",
+              "RelativeDocumentMoniker": "Alphtech DSP\\Reverb.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\Reverb.cs",
+              "RelativeToolTip": "Alphtech DSP\\Reverb.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAYAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T08:49:59.984Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\Program.cs",
+              "RelativeDocumentMoniker": "Alphtech DSP\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Alphtech DSP\\Alphtech DSP\\Alphtech DSP\\Program.cs",
+              "RelativeToolTip": "Alphtech DSP\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T08:49:54.495Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 17,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
