@@ -1,10 +1,11 @@
 ﻿using NAudio.Dsp;
+using System;
 
 namespace AlphtechDSP
 {
     public class Amp
     {
-        private float gain;
+        private Gain gain;
         private float volume;
         private BiQuadFilter bassFilter;
         private BiQuadFilter midFilter;
@@ -12,36 +13,41 @@ namespace AlphtechDSP
 
         public Amp()
         {
-            gain = 1.0f;
-            volume = 1.0f;
-            SetBass(1.0f);
-            SetMid(1.0f);
-            SetTreble(1.0f);
+            gain = new Gain();
+            SetGain(0.1f);
+            SetVolume(5.0f);
+            SetBass(0.5f);
+            SetMid(0.5f);
+            SetTreble(0.5f);
         }
 
         public void SetGain(float value)
         {
-            gain = value;
+            float gainValue = 0.1f + (value * 4.9f);
+            gain.SetGain(gainValue);
         }
 
         public void SetVolume(float value)
         {
-            volume = value;
+            volume = Math.Max(0f, Math.Min(10f, value));
         }
 
         public void SetBass(float value)
         {
-            bassFilter = BiQuadFilter.LowShelf(44100, 200, 1f, value);
+            float bassValue = (value - 0.5f) * 24f; //24 dB range
+            bassFilter = BiQuadFilter.LowShelf(44100, 200, 1f, bassValue);
         }
 
         public void SetMid(float value)
         {
-            midFilter = BiQuadFilter.PeakingEQ(44100, 1000, 1f, value);
+            float midValue = (value - 0.5f) * 24f;
+            midFilter = BiQuadFilter.PeakingEQ(44100, 1000, 1f, midValue);
         }
 
         public void SetTreble(float value)
         {
-            trebleFilter = BiQuadFilter.HighShelf(44100, 5000, 1f, value);
+            float trebleValue = (value - 0.5f) * 24f;
+            trebleFilter = BiQuadFilter.HighShelf(44100, 5000, 1f, trebleValue);
         }
 
         public void Process(float[] buffer)
@@ -50,16 +56,17 @@ namespace AlphtechDSP
             {
                 float sample = buffer[i];
 
-                sample *= gain;
-
                 sample = bassFilter.Transform(sample);
                 sample = midFilter.Transform(sample);
                 sample = trebleFilter.Transform(sample);
 
                 sample *= volume;
 
+                sample = Math.Max(-1f, Math.Min(1f, sample));
                 buffer[i] = sample;
             }
+            gain.Process(buffer);
         }
     }
 }
+

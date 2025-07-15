@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Alphtech_DSP;
 using NAudio.Wave;
 
 namespace AlphtechDSP
@@ -11,18 +12,24 @@ namespace AlphtechDSP
         private BufferedWaveProvider buffer;
         private List<AudioEffect> effects;
         private Amp amp;
+        private Delay delay;
+        private Chorus chorus;
+        private Tremolo tremolo;
 
         public AudioProcessing()
         {
             effects = new List<AudioEffect>();
             amp = new Amp();
+            delay = new Delay();
+            chorus = new Chorus();
+            tremolo = new Tremolo();
 
             input = new WaveInEvent();
             input.WaveFormat = new WaveFormat(44100, 1);
             input.BufferMilliseconds = 10;
 
             output = new WaveOutEvent();
-            output.DesiredLatency = 50;
+            output.DesiredLatency = 49;
 
             buffer = new BufferedWaveProvider(input.WaveFormat);
             buffer.DiscardOnBufferOverflow = true;
@@ -30,12 +37,29 @@ namespace AlphtechDSP
             input.DataAvailable += OnDataAvailable;
             output.Init(buffer);
 
-            amp = new Amp();
+            AddEffect(delay);
+            AddEffect(chorus);
+            AddEffect(tremolo);
         }
 
         public Amp GetAmp()
         {
             return amp;
+        }
+
+        public Delay GetDelay()
+        {
+            return delay;
+        }
+
+        public Chorus GetChorus()
+        {
+            return chorus;
+        }
+
+        public Tremolo GetTremolo()
+        {
+            return tremolo;
         }
 
         public void AddEffect(AudioEffect effect)
@@ -65,7 +89,6 @@ namespace AlphtechDSP
             byte[] inputBytes = e.Buffer;
             float[] samples = ConvertToFloat(inputBytes);
 
-            //process each effect
             for (int i = 0; i < effects.Count; i++)
             {
                 effects[i].EffectsProcess(samples);
@@ -108,6 +131,7 @@ namespace AlphtechDSP
 
         public void Dispose()
         {
+            Stop();
             input.Dispose();
             output.Dispose();
         }

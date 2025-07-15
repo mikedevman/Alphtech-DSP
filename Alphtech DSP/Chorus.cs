@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AlphtechDSP
+﻿namespace AlphtechDSP
 {
     public class Chorus : AudioEffect
     {
@@ -8,26 +6,24 @@ namespace AlphtechDSP
         private int delayBufferSize;
         private int writeIndex;
         private float lfoPhase;
-
         private float mix;
         private float feedback;
         private float rate;
         private float depth;
-        private float baseDelay; 
-        private bool isEnabled;
+        private float baseDelay;
         private int sampleRate;
+        private bool isEnabled;
 
         public Chorus()
         {
             sampleRate = 44100;
-            baseDelay = 10.0f; 
-            depth = 0.5f;
-            rate = 0.25f;
+            baseDelay = 10.0f;
+            depth = 5.0f;
+            rate = 0.5f;
             mix = 0.5f;
-            feedback = 0.0f;
+            feedback = 0.2f;
             isEnabled = true;
-
-            delayBufferSize = (int)(sampleRate * 0.05f); //50 ms max delay
+            delayBufferSize = (int)(sampleRate * 0.05f);
             delayBuffer = new float[delayBufferSize];
             writeIndex = 0;
             lfoPhase = 0.0f;
@@ -45,26 +41,36 @@ namespace AlphtechDSP
 
         public void SetMix(float value)
         {
+            if (value < 0.0f) value = 0.0f;
+            if (value > 1.0f) value = 1.0f;
             mix = value;
         }
 
         public void SetFeedback(float value)
         {
+            if (value < 0.0f) value = 0.0f;
+            if (value > 0.9f) value = 0.9f;
             feedback = value;
         }
 
         public void SetRate(float value)
         {
+            if (value < 0.1f) value = 0.1f;
+            if (value > 5.0f) value = 5.0f;
             rate = value;
         }
 
         public void SetDepth(float value)
         {
+            if (value < 0.0f) value = 0.0f;
+            if (value > 10.0f) value = 10.0f;
             depth = value;
         }
 
         public void SetBaseDelay(float value)
         {
+            if (value < 1.0f) value = 1.0f;
+            if (value > 20.0f) value = 20.0f;
             baseDelay = value;
         }
 
@@ -75,22 +81,28 @@ namespace AlphtechDSP
                 return input;
             }
 
-            //calculate delay time in samples based on LFO
-            float lfo = (float)Math.Sin(2 * Math.PI * lfoPhase);
-            float modDelayMs = baseDelay + (depth * baseDelay * lfo);
-            float modDelaySamples = modDelayMs * sampleRate / 1000.0f;
+            float lfo = (float)System.Math.Sin(2.0 * System.Math.PI * lfoPhase);
+            float modDelayMs = baseDelay + (depth * lfo);
+            float modDelaySamples = (modDelayMs * sampleRate) / 1000.0f;
 
             int delaySamples = (int)modDelaySamples;
+            if (delaySamples >= delayBufferSize)
+            {
+                delaySamples = delayBufferSize - 1;
+            }
+            if (delaySamples < 1)
+            {
+                delaySamples = 1;
+            }
+
             int readIndex = writeIndex - delaySamples;
             if (readIndex < 0)
             {
                 readIndex += delayBufferSize;
             }
 
-            //wrap write index
             float delayedSample = delayBuffer[readIndex];
-            float wet = delayedSample;
-            float output = (input * (1.0f - mix)) + (wet * mix);
+            float output = input * (1.0f - mix) + delayedSample * mix;
 
             delayBuffer[writeIndex] = input + (delayedSample * feedback);
 

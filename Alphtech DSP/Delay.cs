@@ -10,22 +10,48 @@
         private float mix;
         private bool isEnabled;
 
-        public Delay(int sampleRate, int delaySeconds, float feedback, float mix)
+        public Delay(int sampleRate = 44100, float delaySeconds = 0.5f, float feedback = 0.3f, float mix = 0.3f)
         {
             this.sampleRate = sampleRate;
 
-            if (delaySeconds <= 0)
+            if (delaySeconds <= 0.0f)
             {
-                delaySeconds = 1;
+                delaySeconds = 0.1f;
             }
 
-            delaySamples = sampleRate * delaySeconds;
+            delaySamples = (int)(sampleRate * delaySeconds);
+            if (delaySamples < 1)
+            {
+                delaySamples = 1;
+            }
+
             buffer = new float[delaySamples];
             writeIndex = 0;
 
-            this.feedback = feedback;
-            this.mix = mix;
-            isEnabled = true;
+            SetFeedback(feedback);
+            SetMix(mix);
+            isEnabled = false;
+        }
+
+        public void SetDelay(float delaySeconds)
+        {
+            if (delaySeconds <= 0.0f)
+            {
+                delaySeconds = 0.1f;
+            }
+
+            int newDelaySamples = (int)(sampleRate * delaySeconds);
+            if (newDelaySamples < 1)
+            {
+                newDelaySamples = 1;
+            }
+            //resize buffer if necessary
+            if (newDelaySamples != delaySamples)
+            {
+                delaySamples = newDelaySamples;
+                buffer = new float[delaySamples];
+                writeIndex = 0; //reset write index
+            }
         }
 
         public void SetMix(float value)

@@ -11,8 +11,28 @@ namespace UI
         {
             InitializeComponent();
 
-            DelayMix = new CustomTrackBar();
-            DelayFeedback = new CustomTrackBar();
+            timeDelay.Minimum = 1;
+            timeDelay.Maximum = 50;
+            timeDelay.Value = 5;
+
+            mixDelay.Minimum = 0;
+            mixDelay.Maximum = 100;
+            mixDelay.Value = 30;
+
+            feedbackDelay.Minimum = 0;
+            feedbackDelay.Maximum = 99;
+            feedbackDelay.Value = 30;
+
+            this.FormClosing += DelayUI_FormClosing;
+        }
+
+        private void DelayUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (delay != null && isDelayOn)
+            {
+                delay.SetEnabled(false);
+                isDelayOn = false;
+            }
         }
 
         public void SetDelay(Delay delayEffect)
@@ -22,39 +42,60 @@ namespace UI
 
         private void buttonONDelay_Click(object sender, EventArgs e)
         {
-            if (delay != null)
+            if (!isDelayOn)
             {
-                isDelayOn = !isDelayOn;
-                delay.SetEnabled(isDelayOn);
-
-                if (isDelayOn)
+                UpdateDelaySettings();
+                if (delay != null)
                 {
-                    buttonONDelay.BackColor = Color.LightGreen;
-                    buttonONDelay.Text = "ON";
+                    delay.SetEnabled(true);
                 }
-                else
+                buttonONDelay.BackColor = Color.Red;
+                buttonONDelay.Text = "ON";
+                isDelayOn = true;
+            }
+            else
+            {
+                if (delay != null)
                 {
-                    buttonONDelay.BackColor = Color.DarkGray;
-                    buttonONDelay.Text = "OFF";
+                    delay.SetEnabled(false);
                 }
+                buttonONDelay.BackColor = Color.DarkGray;
+                buttonONDelay.Text = "OFF";
+                isDelayOn = false;
             }
         }
 
-        private void DelayMix_Scroll(object sender, EventArgs e)
+        private void UpdateDelaySettings()
         {
             if (delay != null)
             {
-                float value = (float)DelayMix.Value / 100f;
-                delay.SetMix(value);
+                delay.SetDelay(timeDelay.Value / 10.0f);
+                delay.SetMix(mixDelay.Value / 100.0f);
+                delay.SetFeedback(feedbackDelay.Value / 100.0f);
             }
         }
 
-        private void DelayFeedback_Scroll(object sender, EventArgs e)
+        private void timeDelay_Scroll(object sender, EventArgs e)
         {
             if (delay != null)
             {
-                float value = (float)DelayFeedback.Value / 100f;
-                delay.SetFeedback(value);
+                delay.SetDelay(timeDelay.Value / 10.0f);
+            }
+        }
+
+        private void mixDelay_Scroll(object sender, EventArgs e)
+        {
+            if (delay != null)
+            {
+                delay.SetMix(mixDelay.Value / 100.0f);
+            }
+        }
+
+        private void feedbackDelay_Scroll(object sender, EventArgs e)
+        {
+            if (delay != null)
+            {
+                delay.SetFeedback(feedbackDelay.Value / 100.0f);
             }
         }
     }

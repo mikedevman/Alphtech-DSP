@@ -101,7 +101,7 @@
     <Compile Include="Gain.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reverb.cs" />
+    <Compile Include="Tremolo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

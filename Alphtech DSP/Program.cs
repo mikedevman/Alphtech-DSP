@@ -1,15 +1,15 @@
 ﻿using System;
-using AlphtechDSP;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-class Program
+namespace Alphtech_DSP
 {
-    static void Main()
+    internal class Program
     {
-        using (var amp = new AudioProcessing())
+        static void Main(string[] args)
         {
-            amp.Start();
-            Console.ReadLine();
-            amp.Stop();
         }
     }
 }

@@ -1,4 +1,77 @@
-﻿using AlphtechDSP;
+﻿//using AlphtechDSP;
+
+//namespace UI
+//{
+//    public partial class ChorusUI : Form
+//    {
+//        private bool isChorusOn = false;
+//        private Chorus chorus;
+
+//        public ChorusUI()
+//        {
+//            InitializeComponent();
+//        }
+
+//        public void SetChorus(Chorus chorusEffect)
+//        {
+//            chorus = chorusEffect;
+//        }
+
+//        private void buttonONChorus_Click(object sender, EventArgs e)
+//        {
+//            if (!isChorusOn)
+//            {
+//                if (chorus != null)
+//                {
+//                    chorus.SetEnabled(true);
+//                    buttonONChorus.BackColor = Color.LightGreen;
+//                    buttonONChorus.Text = "ON";
+//                    isChorusOn = true;
+//                }
+//            }
+//            else
+//            {
+//                if (chorus != null)
+//                {
+//                    chorus.SetEnabled(false);
+//                    buttonONChorus.BackColor = Color.DarkGray;
+//                    buttonONChorus.Text = "OFF";
+//                    isChorusOn = false;
+//                }
+//            }
+//        }
+
+//        private void chorusMix_Scroll(object sender, EventArgs e)
+//        {
+
+//        }
+
+//        private void chorusFeedback_Scroll(object sender, EventArgs e)
+//        {
+
+//        }
+
+//        private void chorusRate_Scroll(object sender, EventArgs e)
+//        {
+
+//        }
+
+//        private void chorusDepth_Scroll(object sender, EventArgs e)
+//        {
+
+//        }
+
+//        private void chorusBaseDelay_Scroll(object sender, EventArgs e)
+//        {
+
+//        }
+//    }
+//}
+
+using AlphtechDSP;
+using System;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace UI
 {
@@ -11,28 +84,60 @@ namespace UI
         {
             InitializeComponent();
 
-            ChorusMix = new CustomTrackBar();
-            ChorusFeedback = new CustomTrackBar();
-            ChorusRate = new CustomTrackBar();
-            DepthChorus = new CustomTrackBar();
-            BaseDelayChorus = new CustomTrackBar();
+            chorusMix.Minimum = 0;
+            chorusMix.Maximum = 100;
+            chorusMix.Value = 50;
+
+            chorusFeedback.Minimum = 0;
+            chorusFeedback.Maximum = 90;
+            chorusFeedback.Value = 20;
+
+            chorusRate.Minimum = 1;
+            chorusRate.Maximum = 50;
+            chorusRate.Value = 5;
+
+            chorusDepth.Minimum = 0;
+            chorusDepth.Maximum = 100;
+            chorusDepth.Value = 50;
+
+            chorusBaseDelay.Minimum = 10;
+            chorusBaseDelay.Maximum = 200;
+            chorusBaseDelay.Value = 100;
         }
 
         public void SetChorus(Chorus chorusEffect)
         {
             chorus = chorusEffect;
+            if (chorus != null)
+            {
+                isChorusOn = chorus.GetEnabled();
+                UpdateUI();
+            }
+        }
+
+        private void UpdateUI()
+        {
+            if (isChorusOn)
+            {
+                buttonONChorus.BackColor = Color.Red;
+                buttonONChorus.Text = "ON";
+            }
+            else
+            {
+                buttonONChorus.BackColor = Color.DarkGray;
+                buttonONChorus.Text = "OFF";
+            }
         }
 
         private void buttonONChorus_Click(object sender, EventArgs e)
         {
-            if (!isChorusOn)
+            if (isChorusOn == false)
             {
                 if (chorus != null)
                 {
                     chorus.SetEnabled(true);
-                    buttonONChorus.BackColor = Color.LightGreen;
-                    buttonONChorus.Text = "ON";
                     isChorusOn = true;
+                    UpdateUI();
                 }
             }
             else
@@ -40,55 +145,49 @@ namespace UI
                 if (chorus != null)
                 {
                     chorus.SetEnabled(false);
-                    buttonONChorus.BackColor = Color.DarkGray;
-                    buttonONChorus.Text = "OFF";
                     isChorusOn = false;
+                    UpdateUI();
                 }
             }
         }
 
-        private void ChorusMix_Scroll(object sender, EventArgs e)
+        private void chorusMix_Scroll(object sender, EventArgs e)
         {
             if (chorus != null)
             {
-                float value = (float)ChorusMix.Value / 100f;
-                chorus.SetMix(value);
+                chorus.SetMix(chorusMix.Value / 100f);
             }
         }
 
-        private void ChorusFeedback_Scroll(object sender, EventArgs e)
+        private void chorusFeedback_Scroll(object sender, EventArgs e)
         {
             if (chorus != null)
             {
-                float value = (float)ChorusFeedback.Value / 100f;
-                chorus.SetFeedback(value);
+                chorus.SetFeedback(chorusFeedback.Value / 100f);
             }
         }
 
-        private void ChorusRate_Scroll(object sender, EventArgs e)
+        private void chorusRate_Scroll(object sender, EventArgs e)
         {
             if (chorus != null)
             {
-                float value = (float)ChorusRate.Value / 100f;
-                chorus.SetRate(value);
+                chorus.SetRate(chorusRate.Value / 10f);
             }
         }
 
-        private void DepthChorus_Scroll(object sender, EventArgs e)
+        private void chorusDepth_Scroll(object sender, EventArgs e)
         {
             if (chorus != null)
             {
-                float value = (float)DepthChorus.Value / 100f;
-                chorus.SetDepth(value);
+                chorus.SetDepth(chorusDepth.Value / 10f);
             }
         }
 
-        private void BaseDelayChorus_Scroll(object sender, EventArgs e)
+        private void chorusBaseDelay_Scroll(object sender, EventArgs e)
         {
             if (chorus != null)
             {
-                float value = (float)BaseDelayChorus.Value; 
-                chorus.SetBaseDelay(value);
+                chorus.SetBaseDelay(chorusBaseDelay.Value / 10f);
             }
         }
     }
