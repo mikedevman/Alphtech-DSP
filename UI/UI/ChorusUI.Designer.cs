@@ -50,6 +50,7 @@
             // buttonONChorus
             // 
             buttonONChorus.BackColor = Color.DarkGray;
+            buttonONChorus.Cursor = Cursors.Hand;
             buttonONChorus.Location = new Point(185, 45);
             buttonONChorus.Name = "buttonONChorus";
             buttonONChorus.Size = new Size(51, 40);
@@ -121,6 +122,7 @@
             // chorusBaseDelay
             // 
             chorusBaseDelay.BackColor = Color.FromArgb(24, 20, 20);
+            chorusBaseDelay.Cursor = Cursors.Hand;
             chorusBaseDelay.Location = new Point(85, 45);
             chorusBaseDelay.Name = "chorusBaseDelay";
             chorusBaseDelay.Size = new Size(73, 56);
@@ -130,6 +132,7 @@
             // chorusFeedback
             // 
             chorusFeedback.BackColor = Color.FromArgb(24, 20, 20);
+            chorusFeedback.Cursor = Cursors.Hand;
             chorusFeedback.Location = new Point(260, 45);
             chorusFeedback.Name = "chorusFeedback";
             chorusFeedback.Size = new Size(79, 56);
@@ -139,6 +142,7 @@
             // chorusRate
             // 
             chorusRate.BackColor = Color.FromArgb(24, 20, 20);
+            chorusRate.Cursor = Cursors.Hand;
             chorusRate.Location = new Point(81, 148);
             chorusRate.Name = "chorusRate";
             chorusRate.Size = new Size(77, 56);
@@ -148,6 +152,7 @@
             // chorusDepth
             // 
             chorusDepth.BackColor = Color.FromArgb(24, 20, 20);
+            chorusDepth.Cursor = Cursors.Hand;
             chorusDepth.Location = new Point(272, 148);
             chorusDepth.Name = "chorusDepth";
             chorusDepth.Size = new Size(76, 56);
@@ -157,6 +162,7 @@
             // chorusMix
             // 
             chorusMix.BackColor = Color.FromArgb(24, 20, 20);
+            chorusMix.Cursor = Cursors.Hand;
             chorusMix.Location = new Point(178, 148);
             chorusMix.Name = "chorusMix";
             chorusMix.Size = new Size(78, 56);

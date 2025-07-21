@@ -1,3 +1,4 @@
+using Alphtech_DSP;
 using AlphtechDSP;
 using NAudio.Wave;
 namespace UI
@@ -10,6 +11,8 @@ namespace UI
         private DelayUI delayWindow;
         private ChorusUI chorusWindow;
         private TremoloUI tremoloWindow;
+        private OverdriveUI overdriveWindow;
+        private DistortionUI distortionWindow;
         private bool delayWasEnabled = false;
         private bool chorusWasEnabled = false;
         private bool tremoloWasEnabled = false;
@@ -17,6 +20,7 @@ namespace UI
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
         private bool isPaused = false;
+        private AudioProcessing audioProcessing;
 
         public AmpUI()
         {
@@ -133,7 +137,7 @@ namespace UI
             if (amp != null)
             {
                 amp.SetVolume(Volume.Value / 100f);
-                amp.SetGain(Gain.Value / 100f);
+                amp.SetBaseGain(Gain.Value / 100f);
                 amp.SetTreble(Treble.Value / 100f);
                 amp.SetMid(Mid.Value / 100f);
                 amp.SetBass(Bass.Value / 100f);
@@ -152,7 +156,7 @@ namespace UI
         {
             if (amp != null)
             {
-                amp.SetGain(Gain.Value / 100f);
+                amp.SetBaseGain(Gain.Value / 100f);
             }
         }
 
@@ -246,6 +250,36 @@ namespace UI
             }
         }
 
+        private void buttonOverdrive_Click(object sender, EventArgs e)
+        {
+            if (overdriveWindow == null)
+            {
+                overdriveWindow = new OverdriveUI(amp);
+                overdriveWindow.Show();
+            }
+            if (overdriveWindow.IsDisposed)
+            {
+                overdriveWindow = new OverdriveUI(amp);
+            }
+            overdriveWindow.Show();
+            overdriveWindow.BringToFront();
+        }
+
+        private void buttonDistortion_Click(object sender, EventArgs e)
+        {
+            if (distortionWindow == null)
+            {
+                distortionWindow = new DistortionUI(amp);
+                distortionWindow.Show();
+            }
+            if (distortionWindow.IsDisposed)
+            {
+                distortionWindow = new DistortionUI(amp);
+            }
+            distortionWindow.Show();
+            distortionWindow.BringToFront();
+        }
+
         private void loadBackingTrack_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -321,10 +355,41 @@ namespace UI
 
         private void volumeBackingTrack_Scroll(object sender, EventArgs e)
         {
-            if (outputDevice != null && audioFile != null)
+            if (outputDevice != null)
             {
-                float volume = volumeBackingTrack.Value / 100f;
-                audioFile.Volume = volume;
+                if (audioFile != null)
+                {
+                    float volume = volumeBackingTrack.Value / 100f;
+                    audioFile.Volume = volume;
+                }
+            }
+        }
+
+        private void record_Click(object sender, EventArgs e)
+        {
+            if (audio == null)
+            {
+                return;
+            }
+
+            if (!isPoweredOn)
+            {
+                return;
+            }
+
+            if (!audio.IsRecording)
+            {
+                audio.StartRecording();
+                record.Text = "Stop";
+                record.BackColor = Color.Red;
+            }
+            else
+            {
+                string savedFile = audio.StopRecording();
+                record.Text = "Record";
+                record.BackColor = SystemColors.Control;
+
+                System.Diagnostics.Process.Start("explorer.exe", @"C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\recordings");
             }
         }
     }

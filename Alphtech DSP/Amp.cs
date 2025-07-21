@@ -1,11 +1,13 @@
-﻿using NAudio.Dsp;
+﻿using Alphtech_DSP;
+using NAudio.Dsp;
 using System;
 
 namespace AlphtechDSP
 {
     public class Amp
     {
-        private Gain gain;
+        private GainEffect gain;
+        private float userBaseGain = 1.0f;
         private float volume;
         private BiQuadFilter bassFilter;
         private BiQuadFilter midFilter;
@@ -13,18 +15,48 @@ namespace AlphtechDSP
 
         public Amp()
         {
-            gain = new Gain();
-            SetGain(0.1f);
+            gain = new GainEffect();
+            SetBaseGain(0.1f);
             SetVolume(5.0f);
             SetBass(0.5f);
             SetMid(0.5f);
             SetTreble(0.5f);
         }
 
-        public void SetGain(float value)
+        public void SetBaseGain(float value)
         {
-            float gainValue = 0.1f + (value * 4.9f);
-            gain.SetGain(gainValue);
+            userBaseGain = 0.1f + (value * 4.9f);
+            gain.SetBaseGain(userBaseGain);
+        }
+
+        public float GetUserBaseGain()
+        {
+            return userBaseGain;
+        }
+
+        public float GetCurrentGain()
+        {
+            return gain.GetGain();
+        }
+
+        public void EnableOverdrive(bool enabled)
+        {
+            gain.EnableOverdrive(enabled);
+        }
+
+        public void SetOverdriveLevel(float level)
+        {
+            gain.SetOverdriveGain(level); 
+        }
+
+        public void EnableDistortion(bool enabled)
+        {
+            gain.EnableDistortion(enabled);
+        }
+
+        public void SetDistortionLevel(float level)
+        {
+            gain.SetDistortionGain(level);
         }
 
         public void SetVolume(float value)
@@ -34,7 +66,7 @@ namespace AlphtechDSP
 
         public void SetBass(float value)
         {
-            float bassValue = (value - 0.5f) * 24f; //24 dB range
+            float bassValue = (value - 0.5f) * 24f;
             bassFilter = BiQuadFilter.LowShelf(44100, 200, 1f, bassValue);
         }
 
@@ -52,6 +84,8 @@ namespace AlphtechDSP
 
         public void Process(float[] buffer)
         {
+            gain.Process(buffer); 
+
             for (int i = 0; i < buffer.Length; i++)
             {
                 float sample = buffer[i];
@@ -61,12 +95,10 @@ namespace AlphtechDSP
                 sample = trebleFilter.Transform(sample);
 
                 sample *= volume;
-
                 sample = Math.Max(-1f, Math.Min(1f, sample));
+
                 buffer[i] = sample;
             }
-            gain.Process(buffer);
         }
     }
 }
-

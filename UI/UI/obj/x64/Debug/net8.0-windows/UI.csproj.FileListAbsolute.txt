@@ -58,3 +58,5 @@ C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\UI\UI\bin\x64\Debug\net8.0-wi
 C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\UI\UI\bin\x64\Debug\net8.0-windows\NAudio.Wasapi.dll
 C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\UI\UI\bin\x64\Debug\net8.0-windows\NAudio.WinForms.dll
 C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\UI\UI\obj\x64\Debug\net8.0-windows\UI.TremoloUI.resources
+C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\UI\UI\obj\x64\Debug\net8.0-windows\UI.OverdriveUI.resources
+C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\UI\UI\obj\x64\Debug\net8.0-windows\UI.DistortionUI.resources

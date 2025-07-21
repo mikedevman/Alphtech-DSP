@@ -99,6 +99,8 @@
     <Compile Include="Chorus.cs" />
     <Compile Include="Delay.cs" />
     <Compile Include="Gain.cs" />
+    <Compile Include="GainEffect.cs" />
+    <Compile Include="Presets.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tremolo.cs" />

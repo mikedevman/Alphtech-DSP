@@ -45,6 +45,7 @@
             // buttonONDelay
             // 
             buttonONDelay.BackColor = Color.DarkGray;
+            buttonONDelay.Cursor = Cursors.Hand;
             buttonONDelay.Location = new Point(210, 42);
             buttonONDelay.Name = "buttonONDelay";
             buttonONDelay.Size = new Size(51, 40);
@@ -92,6 +93,7 @@
             // timeDelay
             // 
             timeDelay.BackColor = Color.FromArgb(41, 41, 41);
+            timeDelay.Cursor = Cursors.Hand;
             timeDelay.Location = new Point(74, 127);
             timeDelay.Name = "timeDelay";
             timeDelay.Size = new Size(98, 56);
@@ -112,6 +114,7 @@
             // mixDelay
             // 
             mixDelay.BackColor = Color.FromArgb(41, 41, 41);
+            mixDelay.Cursor = Cursors.Hand;
             mixDelay.Location = new Point(178, 127);
             mixDelay.Name = "mixDelay";
             mixDelay.Size = new Size(90, 56);
@@ -121,6 +124,7 @@
             // feedbackDelay
             // 
             feedbackDelay.BackColor = Color.FromArgb(41, 41, 41);
+            feedbackDelay.Cursor = Cursors.Hand;
             feedbackDelay.Location = new Point(271, 127);
             feedbackDelay.Name = "feedbackDelay";
             feedbackDelay.Size = new Size(94, 56);

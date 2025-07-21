@@ -1,0 +1,96 @@
+﻿namespace UI
+{
+    partial class DistortionUI
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+            /// <summary>
+            /// Required method for Designer support - do not modify
+            /// the contents of this method with the code editor.
+            /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DistortionUI));
+            buttonONDistortion = new Button();
+            labelGain = new Label();
+            Gain = new TrackBar();
+            ((System.ComponentModel.ISupportInitialize)Gain).BeginInit();
+            SuspendLayout();
+            // 
+            // buttonONDistortion
+            // 
+            buttonONDistortion.BackColor = Color.DarkGray;
+            buttonONDistortion.Cursor = Cursors.Hand;
+            buttonONDistortion.Location = new Point(170, 50);
+            buttonONDistortion.Name = "buttonONDistortion";
+            buttonONDistortion.Size = new Size(51, 40);
+            buttonONDistortion.TabIndex = 4;
+            buttonONDistortion.Text = "OFF";
+            buttonONDistortion.UseVisualStyleBackColor = false;
+            buttonONDistortion.Click += buttonONDistortion_Click;
+            // 
+            // labelGain
+            // 
+            labelGain.AutoSize = true;
+            labelGain.BackColor = Color.FromArgb(20, 19, 19);
+            labelGain.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelGain.ForeColor = Color.WhiteSmoke;
+            labelGain.Location = new Point(170, 116);
+            labelGain.Name = "labelGain";
+            labelGain.Size = new Size(46, 23);
+            labelGain.TabIndex = 15;
+            labelGain.Text = "Gain";
+            // 
+            // Gain
+            // 
+            Gain.BackColor = Color.FromArgb(20, 19, 19);
+            Gain.Cursor = Cursors.Hand;
+            Gain.Location = new Point(145, 142);
+            Gain.Name = "Gain";
+            Gain.Size = new Size(98, 56);
+            Gain.TabIndex = 16;
+            Gain.Scroll += Gain_Scroll;
+            // 
+            // DistortionUI
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(392, 634);
+            Controls.Add(Gain);
+            Controls.Add(labelGain);
+            Controls.Add(buttonONDistortion);
+            Name = "DistortionUI";
+            Text = "DistortionUI";
+            ((System.ComponentModel.ISupportInitialize)Gain).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+
+            this.FormClosing += DistortionUI_FormClosing;
+        }
+
+        #endregion
+
+        private Button buttonONDistortion;
+        private Label labelGain;
+        private TrackBar Gain;
+    }
+}

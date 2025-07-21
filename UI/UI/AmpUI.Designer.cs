@@ -49,6 +49,9 @@
             volumeBackingTrack = new TrackBar();
             labelBackingTrackVolume = new TextBox();
             buttonTremolo = new Button();
+            buttonOverdrive = new Button();
+            buttonDistortion = new Button();
+            record = new Button();
             ((System.ComponentModel.ISupportInitialize)Volume).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Bass).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Gain).BeginInit();
@@ -284,6 +287,42 @@
             buttonTremolo.UseVisualStyleBackColor = false;
             buttonTremolo.Click += buttonTremolo_Click;
             // 
+            // buttonOverdrive
+            // 
+            buttonOverdrive.BackColor = Color.FromArgb(252, 204, 92);
+            buttonOverdrive.Cursor = Cursors.Hand;
+            buttonOverdrive.Location = new Point(201, 905);
+            buttonOverdrive.Name = "buttonOverdrive";
+            buttonOverdrive.Size = new Size(94, 48);
+            buttonOverdrive.TabIndex = 27;
+            buttonOverdrive.Text = "Overdrive";
+            buttonOverdrive.UseVisualStyleBackColor = false;
+            buttonOverdrive.Click += buttonOverdrive_Click;
+            // 
+            // buttonDistortion
+            // 
+            buttonDistortion.BackColor = Color.FromArgb(232, 116, 36);
+            buttonDistortion.Cursor = Cursors.Hand;
+            buttonDistortion.Location = new Point(304, 905);
+            buttonDistortion.Name = "buttonDistortion";
+            buttonDistortion.Size = new Size(94, 48);
+            buttonDistortion.TabIndex = 28;
+            buttonDistortion.Text = "Distortion";
+            buttonDistortion.UseVisualStyleBackColor = false;
+            buttonDistortion.Click += buttonDistortion_Click;
+            // 
+            // record
+            // 
+            record.BackColor = Color.DarkGray;
+            record.Cursor = Cursors.Hand;
+            record.Location = new Point(1036, 843);
+            record.Name = "record";
+            record.Size = new Size(98, 55);
+            record.TabIndex = 29;
+            record.Text = "Record";
+            record.UseVisualStyleBackColor = false;
+            record.Click += record_Click;
+            // 
             // AmpUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -291,7 +330,10 @@
             BackColor = Color.DimGray;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(1131, 945);
+            ClientSize = new Size(1330, 959);
+            Controls.Add(record);
+            Controls.Add(buttonDistortion);
+            Controls.Add(buttonOverdrive);
             Controls.Add(buttonTremolo);
             Controls.Add(labelBackingTrackVolume);
             Controls.Add(volumeBackingTrack);
@@ -346,5 +388,8 @@
         private TrackBar volumeBackingTrack;
         private TextBox labelBackingTrackVolume;
         private Button buttonTremolo;
+        private Button buttonOverdrive;
+        private Button buttonDistortion;
+        private Button record;
     }
 }

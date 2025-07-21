@@ -10,6 +10,12 @@
     <Compile Update="DelayUI.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="DistortionUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="OverdriveUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TremoloUI.cs">
       <SubType>Form</SubType>
     </Compile>

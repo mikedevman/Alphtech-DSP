@@ -41,6 +41,7 @@
             // buttonONTremolo
             // 
             buttonONTremolo.BackColor = Color.DarkGray;
+            buttonONTremolo.Cursor = Cursors.Hand;
             buttonONTremolo.Location = new Point(243, 58);
             buttonONTremolo.Name = "buttonONTremolo";
             buttonONTremolo.Size = new Size(51, 40);
@@ -52,6 +53,7 @@
             // rateTremolo
             // 
             rateTremolo.BackColor = Color.FromArgb(59, 60, 61);
+            rateTremolo.Cursor = Cursors.Hand;
             rateTremolo.Location = new Point(129, 138);
             rateTremolo.Name = "rateTremolo";
             rateTremolo.Size = new Size(98, 56);
@@ -85,6 +87,7 @@
             // depthTremolo
             // 
             depthTremolo.BackColor = Color.FromArgb(59, 60, 61);
+            depthTremolo.Cursor = Cursors.Hand;
             depthTremolo.Location = new Point(296, 138);
             depthTremolo.Name = "depthTremolo";
             depthTremolo.Size = new Size(98, 56);
