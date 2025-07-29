@@ -88,7 +88,7 @@ namespace AlphtechDSP
 
         public void Stop()
         {
-            StopRecording(); 
+            StopRecording();
             input.StopRecording();
             output.Stop();
         }
@@ -118,7 +118,7 @@ namespace AlphtechDSP
             isRecording = false;
             if (waveWriter != null)
             {
-                waveWriter.Flush(); 
+                waveWriter.Flush();
                 waveWriter.Dispose();
                 waveWriter = null;
             }
@@ -153,6 +153,7 @@ namespace AlphtechDSP
             {
                 effects[i].EffectsProcess(samples);
             }
+
             amp.Process(samples);
 
             byte[] outputBytes = ConvertToByte(samples);
@@ -160,9 +161,9 @@ namespace AlphtechDSP
 
             if (isRecording && waveWriter != null)
             {
-                byte[] recordBytes = ConvertToByte(samples); 
+                byte[] recordBytes = ConvertToByte(samples);
                 waveWriter.Write(recordBytes, 0, recordBytes.Length);
-                waveWriter.Flush(); 
+                waveWriter.Flush();
             }
         }
 
@@ -189,6 +190,23 @@ namespace AlphtechDSP
                 bytes[i * 2 + 1] = sampleBytes[1];
             }
             return bytes;
+        }
+
+        public void ApplyPreset(Preset preset)
+        {
+            chorus.SetEnabled(preset.ChorusEnabled);
+            chorus.SetMix(preset.ChorusMix);
+            chorus.SetRate(preset.ChorusRate);
+            chorus.SetDepth(preset.ChorusDepth);
+
+            delay.SetEnabled(preset.DelayEnabled);
+            delay.SetDelay(preset.DelayTime);
+            delay.SetMix(preset.DelayMix);
+            delay.SetFeedback(preset.DelayFeedback);
+
+            tremolo.SetEnabled(preset.TremoloEnabled);
+            tremolo.SetRate(preset.TremoloRate);
+            tremolo.SetDepth(preset.TremoloDepth);
         }
 
         public void Dispose()

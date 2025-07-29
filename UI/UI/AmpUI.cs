@@ -7,7 +7,7 @@ namespace UI
     {
         private bool isPoweredOn = false;
         private AudioProcessing audio;
-        private Amp amp;
+        private Amp amp = new Amp();
         private DelayUI delayWindow;
         private ChorusUI chorusWindow;
         private TremoloUI tremoloWindow;
@@ -20,11 +20,16 @@ namespace UI
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
         private bool isPaused = false;
-        private AudioProcessing audioProcessing;
 
         public AmpUI()
         {
             InitializeComponent();
+
+            choosePreset.Items.Clear();
+            choosePreset.Items.Add("(choose preset)");
+            choosePreset.Items.AddRange(Enum.GetNames(typeof(PresetType)));
+            choosePreset.SelectedIndex = 0;
+
             Volume.Minimum = 0;
             Volume.Maximum = 100;
             Volume.Value = 0;
@@ -391,6 +396,38 @@ namespace UI
 
                 System.Diagnostics.Process.Start("explorer.exe", @"C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\recordings");
             }
+        }
+
+        private void choosePreset_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (choosePreset.SelectedIndex == 0)
+                return;
+
+            string selected = choosePreset.SelectedItem.ToString();
+            PresetType type = (PresetType)Enum.Parse(typeof(PresetType), selected);
+            Preset preset = PresetFactory.GetPreset(type);
+
+            amp.LoadState(preset);
+            audio.ApplyPreset(preset);
+
+            UpdateUIFromAmpState();
+        }
+
+        private void UpdateUIFromAmpState()
+        {
+            Volume.Value = (int)(amp.GetCurrentGain() * 100); 
+            Gain.Value = (int)(amp.GetUserBaseGain() * 100);
+
+            Treble.Value = (int)(amp.GetTreble() * 100);
+            Mid.Value = (int)(amp.GetMid() * 100);
+            Bass.Value = (int)(amp.GetBass() * 100);
+
+            if (delayWindow != null && !delayWindow.IsDisposed)
+                delayWindow.SetDelay(audio.GetDelay());
+            if (chorusWindow != null && !chorusWindow.IsDisposed)
+                chorusWindow.SetChorus(audio.GetChorus());
+            if (tremoloWindow != null && !tremoloWindow.IsDisposed)
+                tremoloWindow.SetTremolo(audio.GetTremolo());
         }
     }
 }

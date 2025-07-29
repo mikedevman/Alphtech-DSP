@@ -1,6 +1,6 @@
-﻿using Alphtech_DSP;
-using NAudio.Dsp;
+﻿using NAudio.Dsp;
 using System;
+using Alphtech_DSP;
 
 namespace AlphtechDSP
 {
@@ -12,6 +12,9 @@ namespace AlphtechDSP
         private BiQuadFilter bassFilter;
         private BiQuadFilter midFilter;
         private BiQuadFilter trebleFilter;
+        private float lastBassValue;
+        private float lastMidValue;
+        private float lastTrebleValue;
 
         public Amp()
         {
@@ -46,7 +49,7 @@ namespace AlphtechDSP
 
         public void SetOverdriveLevel(float level)
         {
-            gain.SetOverdriveGain(level); 
+            gain.SetOverdriveGain(level);
         }
 
         public void EnableDistortion(bool enabled)
@@ -68,23 +71,56 @@ namespace AlphtechDSP
         {
             float bassValue = (value - 0.5f) * 24f;
             bassFilter = BiQuadFilter.LowShelf(44100, 200, 1f, bassValue);
+            lastBassValue = value;
+        }
+
+        public float GetBass()
+        {
+            return lastBassValue;
         }
 
         public void SetMid(float value)
         {
             float midValue = (value - 0.5f) * 24f;
             midFilter = BiQuadFilter.PeakingEQ(44100, 1000, 1f, midValue);
+            lastMidValue = value;
+        }
+
+        public float GetMid()
+        {
+            return lastMidValue;
         }
 
         public void SetTreble(float value)
         {
             float trebleValue = (value - 0.5f) * 24f;
             trebleFilter = BiQuadFilter.HighShelf(44100, 5000, 1f, trebleValue);
+            lastTrebleValue = value;
+        }
+
+        public float GetTreble()
+        {
+            return lastTrebleValue;
+        }
+
+        public BiQuadFilter GetBassFilter()
+        {
+            return bassFilter;
+        }
+
+        public BiQuadFilter GetMidFilter()
+        {
+            return midFilter;
+        }
+
+        public BiQuadFilter GetTrebleFilter()
+        {
+            return trebleFilter;
         }
 
         public void Process(float[] buffer)
         {
-            gain.Process(buffer); 
+            gain.Process(buffer);
 
             for (int i = 0; i < buffer.Length; i++)
             {
@@ -99,6 +135,23 @@ namespace AlphtechDSP
 
                 buffer[i] = sample;
             }
+        }
+
+        public void LoadState(Preset preset)
+        {
+            float baseGainSlider = (preset.BaseGain - 0.1f) / 4.9f;
+            SetBaseGain(baseGainSlider);
+
+            SetVolume(preset.Volume);
+            SetBass(preset.Bass);
+            SetMid(preset.Mid);
+            SetTreble(preset.Treble);
+
+            EnableOverdrive(preset.OverdriveEnabled);
+            SetOverdriveLevel(preset.OverdriveLevel);
+
+            EnableDistortion(preset.DistortionEnabled);
+            SetDistortionLevel(preset.DistortionLevel);
         }
     }
 }

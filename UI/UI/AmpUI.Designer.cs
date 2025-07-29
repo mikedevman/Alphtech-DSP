@@ -52,6 +52,8 @@
             buttonOverdrive = new Button();
             buttonDistortion = new Button();
             record = new Button();
+            choosePreset = new ComboBox();
+            labelChoosePreset = new TextBox();
             ((System.ComponentModel.ISupportInitialize)Volume).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Bass).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Gain).BeginInit();
@@ -323,6 +325,27 @@
             record.UseVisualStyleBackColor = false;
             record.Click += record_Click;
             // 
+            // choosePreset
+            // 
+            choosePreset.FormattingEnabled = true;
+            choosePreset.Location = new Point(1146, 174);
+            choosePreset.Name = "choosePreset";
+            choosePreset.Size = new Size(151, 28);
+            choosePreset.TabIndex = 30;
+            choosePreset.SelectedIndexChanged += choosePreset_SelectedIndexChanged;
+            // 
+            // labelChoosePreset
+            // 
+            labelChoosePreset.BackColor = Color.DimGray;
+            labelChoosePreset.BorderStyle = BorderStyle.None;
+            labelChoosePreset.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            labelChoosePreset.ForeColor = Color.White;
+            labelChoosePreset.Location = new Point(1156, 145);
+            labelChoosePreset.Name = "labelChoosePreset";
+            labelChoosePreset.Size = new Size(201, 23);
+            labelChoosePreset.TabIndex = 31;
+            labelChoosePreset.Text = "Choose Preset";
+            // 
             // AmpUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -330,7 +353,9 @@
             BackColor = Color.DimGray;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(1330, 959);
+            ClientSize = new Size(1313, 959);
+            Controls.Add(labelChoosePreset);
+            Controls.Add(choosePreset);
             Controls.Add(record);
             Controls.Add(buttonDistortion);
             Controls.Add(buttonOverdrive);
@@ -391,5 +416,7 @@
         private Button buttonOverdrive;
         private Button buttonDistortion;
         private Button record;
+        private ComboBox choosePreset;
+        private TextBox labelChoosePreset;
     }
 }
