@@ -12,11 +12,11 @@ namespace UI
 
             rateTremolo.Minimum = 1;
             rateTremolo.Maximum = 20;
-            rateTremolo.Value = 5;
+            rateTremolo.Value = 1;
 
             depthTremolo.Minimum = 0;
             depthTremolo.Maximum = 100;
-            depthTremolo.Value = 50;
+            depthTremolo.Value = 0;
 
             this.FormClosing += Tremolo_FormClosing;
         }
@@ -75,6 +75,7 @@ namespace UI
             {
                 tremolo.SetRate(rateTremolo.Value / 20.0f);
             }
+            labelValueTremoloRate.Text = rateTremolo.Value.ToString();
         }
 
         private void depthTremolo_Scroll(object sender, EventArgs e)
@@ -83,6 +84,7 @@ namespace UI
             {
                 tremolo.SetDepth(depthTremolo.Value / 100.0f);
             }
+            labelValueTremoloDepth.Text = depthTremolo.Value.ToString();
         }
     }
 }

@@ -13,23 +13,23 @@ namespace UI
 
             chorusMix.Minimum = 0;
             chorusMix.Maximum = 100;
-            chorusMix.Value = 50;
+            chorusMix.Value = 0;
 
             chorusFeedback.Minimum = 0;
             chorusFeedback.Maximum = 90;
-            chorusFeedback.Value = 20;
+            chorusFeedback.Value = 0;
 
             chorusRate.Minimum = 1;
             chorusRate.Maximum = 50;
-            chorusRate.Value = 5;
+            chorusRate.Value = 1;
 
             chorusDepth.Minimum = 0;
             chorusDepth.Maximum = 100;
-            chorusDepth.Value = 50;
+            chorusDepth.Value = 0;
 
             chorusBaseDelay.Minimum = 10;
             chorusBaseDelay.Maximum = 200;
-            chorusBaseDelay.Value = 100;
+            chorusBaseDelay.Value = 10;
         }
 
         public void SetChorus(Chorus chorusEffect)
@@ -84,6 +84,7 @@ namespace UI
             {
                 chorus.SetMix(chorusMix.Value / 100f);
             }
+            labelValueChorusMix.Text = chorusMix.Value.ToString();
         }
 
         private void chorusFeedback_Scroll(object sender, EventArgs e)
@@ -92,6 +93,7 @@ namespace UI
             {
                 chorus.SetFeedback(chorusFeedback.Value / 100f);
             }
+            labelValueChorusFeedback.Text = chorusFeedback.Value.ToString();
         }
 
         private void chorusRate_Scroll(object sender, EventArgs e)
@@ -100,6 +102,7 @@ namespace UI
             {
                 chorus.SetRate(chorusRate.Value / 10f);
             }
+            labelValueChorusRate.Text = chorusRate.Value.ToString();
         }
 
         private void chorusDepth_Scroll(object sender, EventArgs e)
@@ -108,6 +111,7 @@ namespace UI
             {
                 chorus.SetDepth(chorusDepth.Value / 10f);
             }
+            labelValueChorusDepth.Text = chorusDepth.Value.ToString();
         }
 
         private void chorusBaseDelay_Scroll(object sender, EventArgs e)
@@ -116,6 +120,7 @@ namespace UI
             {
                 chorus.SetBaseDelay(chorusBaseDelay.Value / 10f);
             }
+            labelValueChorusBaseDelay.Text = chorusBaseDelay.Value.ToString();
         }
     }
 }

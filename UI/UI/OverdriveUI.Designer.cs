@@ -32,6 +32,7 @@
             buttonONOverdrive = new Button();
             Gain = new TrackBar();
             labelGain = new Label();
+            labelValueOverdriveGain = new Label();
             ((System.ComponentModel.ISupportInitialize)Gain).BeginInit();
             SuspendLayout();
             // 
@@ -63,11 +64,23 @@
             labelGain.BackColor = Color.FromArgb(20, 19, 19);
             labelGain.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             labelGain.ForeColor = Color.WhiteSmoke;
-            labelGain.Location = new Point(196, 125);
+            labelGain.Location = new Point(182, 125);
             labelGain.Name = "labelGain";
             labelGain.Size = new Size(46, 23);
             labelGain.TabIndex = 14;
             labelGain.Text = "Gain";
+            // 
+            // labelValueOverdriveGain
+            // 
+            labelValueOverdriveGain.AutoSize = true;
+            labelValueOverdriveGain.BackColor = Color.FromArgb(20, 19, 19);
+            labelValueOverdriveGain.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelValueOverdriveGain.ForeColor = Color.WhiteSmoke;
+            labelValueOverdriveGain.Location = new Point(225, 125);
+            labelValueOverdriveGain.Name = "labelValueOverdriveGain";
+            labelValueOverdriveGain.Size = new Size(35, 23);
+            labelValueOverdriveGain.TabIndex = 33;
+            labelValueOverdriveGain.Text = "1.0";
             // 
             // OverdriveUI
             // 
@@ -75,16 +88,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(441, 715);
+            Controls.Add(labelValueOverdriveGain);
             Controls.Add(labelGain);
             Controls.Add(Gain);
             Controls.Add(buttonONOverdrive);
             Name = "OverdriveUI";
             Text = "OverdriveUI";
+            FormClosing += OverdriveUI_FormClosing;
             ((System.ComponentModel.ISupportInitialize)Gain).EndInit();
             ResumeLayout(false);
             PerformLayout();
-
-            this.FormClosing += OverdriveUI_FormClosing;
         }
 
         #endregion
@@ -92,5 +105,6 @@
         private Button buttonONOverdrive;
         private TrackBar Gain;
         private Label labelGain;
+        private Label labelValueOverdriveGain;
     }
 }

@@ -54,6 +54,13 @@
             record = new Button();
             choosePreset = new ComboBox();
             labelChoosePreset = new TextBox();
+            buttonSaveCustomPreset = new Button();
+            buttonLoadCustomPreset = new Button();
+            labelVolumeValue = new Label();
+            labelGainValue = new Label();
+            labelTrebleValue = new Label();
+            labelMidValue = new Label();
+            labelBassValue = new Label();
             ((System.ComponentModel.ISupportInitialize)Volume).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Bass).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Gain).BeginInit();
@@ -80,7 +87,7 @@
             labelVolume.BackColor = SystemColors.InactiveCaptionText;
             labelVolume.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             labelVolume.ForeColor = Color.WhiteSmoke;
-            labelVolume.Location = new Point(166, 132);
+            labelVolume.Location = new Point(135, 132);
             labelVolume.Name = "labelVolume";
             labelVolume.Size = new Size(70, 23);
             labelVolume.TabIndex = 6;
@@ -92,7 +99,7 @@
             labelGain.BackColor = SystemColors.InactiveCaptionText;
             labelGain.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             labelGain.ForeColor = Color.WhiteSmoke;
-            labelGain.Location = new Point(304, 132);
+            labelGain.Location = new Point(262, 132);
             labelGain.Name = "labelGain";
             labelGain.Size = new Size(46, 23);
             labelGain.TabIndex = 7;
@@ -104,7 +111,7 @@
             labelTreble.BackColor = SystemColors.InactiveCaptionText;
             labelTreble.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             labelTreble.ForeColor = Color.WhiteSmoke;
-            labelTreble.Location = new Point(420, 132);
+            labelTreble.Location = new Point(388, 132);
             labelTreble.Name = "labelTreble";
             labelTreble.Size = new Size(60, 23);
             labelTreble.TabIndex = 8;
@@ -116,7 +123,7 @@
             labelMid.BackColor = SystemColors.InactiveCaptionText;
             labelMid.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             labelMid.ForeColor = Color.WhiteSmoke;
-            labelMid.Location = new Point(560, 132);
+            labelMid.Location = new Point(515, 133);
             labelMid.Name = "labelMid";
             labelMid.Size = new Size(42, 23);
             labelMid.TabIndex = 9;
@@ -128,7 +135,7 @@
             labelBass.BackColor = SystemColors.InactiveCaptionText;
             labelBass.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             labelBass.ForeColor = Color.WhiteSmoke;
-            labelBass.Location = new Point(687, 132);
+            labelBass.Location = new Point(642, 132);
             labelBass.Name = "labelBass";
             labelBass.Size = new Size(44, 23);
             labelBass.TabIndex = 10;
@@ -138,7 +145,7 @@
             // 
             Volume.BackColor = SystemColors.InactiveCaptionText;
             Volume.Cursor = Cursors.Hand;
-            Volume.Location = new Point(137, 99);
+            Volume.Location = new Point(126, 99);
             Volume.Name = "Volume";
             Volume.Size = new Size(130, 56);
             Volume.TabIndex = 11;
@@ -148,7 +155,7 @@
             // 
             Bass.BackColor = SystemColors.InactiveCaptionText;
             Bass.Cursor = Cursors.Hand;
-            Bass.Location = new Point(642, 99);
+            Bass.Location = new Point(629, 99);
             Bass.Name = "Bass";
             Bass.Size = new Size(130, 56);
             Bass.TabIndex = 12;
@@ -158,7 +165,7 @@
             // 
             Gain.BackColor = SystemColors.InactiveCaptionText;
             Gain.Cursor = Cursors.Hand;
-            Gain.Location = new Point(262, 99);
+            Gain.Location = new Point(252, 99);
             Gain.Name = "Gain";
             Gain.Size = new Size(130, 56);
             Gain.TabIndex = 14;
@@ -168,7 +175,7 @@
             // 
             Treble.BackColor = SystemColors.InactiveCaptionText;
             Treble.Cursor = Cursors.Hand;
-            Treble.Location = new Point(388, 99);
+            Treble.Location = new Point(379, 99);
             Treble.Name = "Treble";
             Treble.Size = new Size(130, 56);
             Treble.TabIndex = 15;
@@ -178,7 +185,7 @@
             // 
             Mid.BackColor = SystemColors.InactiveCaptionText;
             Mid.Cursor = Cursors.Hand;
-            Mid.Location = new Point(515, 99);
+            Mid.Location = new Point(506, 99);
             Mid.Name = "Mid";
             Mid.Size = new Size(130, 56);
             Mid.TabIndex = 16;
@@ -340,20 +347,112 @@
             labelChoosePreset.BorderStyle = BorderStyle.None;
             labelChoosePreset.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             labelChoosePreset.ForeColor = Color.White;
-            labelChoosePreset.Location = new Point(1156, 145);
+            labelChoosePreset.Location = new Point(1146, 145);
             labelChoosePreset.Name = "labelChoosePreset";
             labelChoosePreset.Size = new Size(201, 23);
             labelChoosePreset.TabIndex = 31;
-            labelChoosePreset.Text = "Choose Preset";
+            labelChoosePreset.Text = "Choose Amp Preset";
+            // 
+            // buttonSaveCustomPreset
+            // 
+            buttonSaveCustomPreset.BackColor = Color.DarkGray;
+            buttonSaveCustomPreset.Cursor = Cursors.Hand;
+            buttonSaveCustomPreset.Location = new Point(1157, 236);
+            buttonSaveCustomPreset.Name = "buttonSaveCustomPreset";
+            buttonSaveCustomPreset.Size = new Size(123, 55);
+            buttonSaveCustomPreset.TabIndex = 32;
+            buttonSaveCustomPreset.Text = "Save Custom Amp Preset";
+            buttonSaveCustomPreset.UseVisualStyleBackColor = false;
+            buttonSaveCustomPreset.Click += buttonSavePreset_Click;
+            // 
+            // buttonLoadCustomPreset
+            // 
+            buttonLoadCustomPreset.BackColor = Color.DarkGray;
+            buttonLoadCustomPreset.Cursor = Cursors.Hand;
+            buttonLoadCustomPreset.Location = new Point(1157, 297);
+            buttonLoadCustomPreset.Name = "buttonLoadCustomPreset";
+            buttonLoadCustomPreset.Size = new Size(123, 55);
+            buttonLoadCustomPreset.TabIndex = 33;
+            buttonLoadCustomPreset.Text = "Load Custom Amp Preset";
+            buttonLoadCustomPreset.UseVisualStyleBackColor = false;
+            buttonLoadCustomPreset.Click += buttonLoadCustomPreset_Click;
+            // 
+            // labelVolumeValue
+            // 
+            labelVolumeValue.AutoSize = true;
+            labelVolumeValue.BackColor = SystemColors.InactiveCaptionText;
+            labelVolumeValue.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            labelVolumeValue.ForeColor = Color.WhiteSmoke;
+            labelVolumeValue.Location = new Point(201, 133);
+            labelVolumeValue.Name = "labelVolumeValue";
+            labelVolumeValue.Size = new Size(20, 23);
+            labelVolumeValue.TabIndex = 34;
+            labelVolumeValue.Text = "0";
+            // 
+            // labelGainValue
+            // 
+            labelGainValue.AutoSize = true;
+            labelGainValue.BackColor = SystemColors.InactiveCaptionText;
+            labelGainValue.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            labelGainValue.ForeColor = Color.WhiteSmoke;
+            labelGainValue.Location = new Point(304, 133);
+            labelGainValue.Name = "labelGainValue";
+            labelGainValue.Size = new Size(20, 23);
+            labelGainValue.TabIndex = 35;
+            labelGainValue.Text = "0";
+            // 
+            // labelTrebleValue
+            // 
+            labelTrebleValue.AutoSize = true;
+            labelTrebleValue.BackColor = SystemColors.InactiveCaptionText;
+            labelTrebleValue.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            labelTrebleValue.ForeColor = Color.WhiteSmoke;
+            labelTrebleValue.Location = new Point(445, 133);
+            labelTrebleValue.Name = "labelTrebleValue";
+            labelTrebleValue.Size = new Size(20, 23);
+            labelTrebleValue.TabIndex = 36;
+            labelTrebleValue.Text = "0";
+            // 
+            // labelMidValue
+            // 
+            labelMidValue.AutoSize = true;
+            labelMidValue.BackColor = SystemColors.InactiveCaptionText;
+            labelMidValue.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            labelMidValue.ForeColor = Color.WhiteSmoke;
+            labelMidValue.Location = new Point(554, 133);
+            labelMidValue.Name = "labelMidValue";
+            labelMidValue.Size = new Size(20, 23);
+            labelMidValue.TabIndex = 37;
+            labelMidValue.Text = "0";
+            // 
+            // labelBassValue
+            // 
+            labelBassValue.AutoSize = true;
+            labelBassValue.BackColor = SystemColors.InactiveCaptionText;
+            labelBassValue.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            labelBassValue.ForeColor = Color.WhiteSmoke;
+            labelBassValue.Location = new Point(683, 133);
+            labelBassValue.Name = "labelBassValue";
+            labelBassValue.Size = new Size(20, 23);
+            labelBassValue.TabIndex = 38;
+            labelBassValue.Text = "0";
             // 
             // AmpUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.EnablePreventFocusChange;
             BackColor = Color.DimGray;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(1313, 959);
+            ClientSize = new Size(1307, 959);
+            Controls.Add(labelBassValue);
+            Controls.Add(labelMidValue);
+            Controls.Add(labelTrebleValue);
+            Controls.Add(labelGainValue);
+            Controls.Add(labelVolumeValue);
+            Controls.Add(buttonLoadCustomPreset);
+            Controls.Add(buttonSaveCustomPreset);
             Controls.Add(labelChoosePreset);
             Controls.Add(choosePreset);
             Controls.Add(record);
@@ -381,6 +480,7 @@
             Controls.Add(Bass);
             DoubleBuffered = true;
             Name = "AmpUI";
+            Text = "Alphtech DSP";
             ((System.ComponentModel.ISupportInitialize)Volume).EndInit();
             ((System.ComponentModel.ISupportInitialize)Bass).EndInit();
             ((System.ComponentModel.ISupportInitialize)Gain).EndInit();
@@ -418,5 +518,12 @@
         private Button record;
         private ComboBox choosePreset;
         private TextBox labelChoosePreset;
+        private Button buttonSaveCustomPreset;
+        private Button buttonLoadCustomPreset;
+        private Label labelVolumeValue;
+        private Label labelGainValue;
+        private Label labelTrebleValue;
+        private Label labelMidValue;
+        private Label labelBassValue;
     }
 }

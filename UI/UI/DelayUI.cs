@@ -1,4 +1,5 @@
 ﻿using AlphtechDSP;
+using Alphtech_DSP;
 
 namespace UI
 {
@@ -13,15 +14,15 @@ namespace UI
 
             timeDelay.Minimum = 1;
             timeDelay.Maximum = 50;
-            timeDelay.Value = 5;
+            timeDelay.Value = 1;
 
             mixDelay.Minimum = 0;
             mixDelay.Maximum = 100;
-            mixDelay.Value = 30;
+            mixDelay.Value = 0;
 
             feedbackDelay.Minimum = 0;
             feedbackDelay.Maximum = 99;
-            feedbackDelay.Value = 30;
+            feedbackDelay.Value = 0;
 
             this.FormClosing += DelayUI_FormClosing;
         }
@@ -75,12 +76,14 @@ namespace UI
             }
         }
 
+        
         private void timeDelay_Scroll(object sender, EventArgs e)
         {
             if (delay != null)
             {
                 delay.SetDelay(timeDelay.Value / 10.0f);
             }
+            labelValueDelayTime.Text = timeDelay.Value.ToString();
         }
 
         private void mixDelay_Scroll(object sender, EventArgs e)
@@ -89,6 +92,7 @@ namespace UI
             {
                 delay.SetMix(mixDelay.Value / 100.0f);
             }
+            labelValueDelayMix.Text = mixDelay.Value.ToString();
         }
 
         private void feedbackDelay_Scroll(object sender, EventArgs e)
@@ -97,6 +101,7 @@ namespace UI
             {
                 delay.SetFeedback(feedbackDelay.Value / 100.0f);
             }
+            labelValueDelayFeedback.Text = feedbackDelay.Value.ToString();
         }
     }
 }

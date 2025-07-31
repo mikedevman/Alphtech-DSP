@@ -52,6 +52,7 @@ namespace UI
             {
                 amp.SetBaseGain(gainValue);
             }
+            labelValueDistortionGain.Text = gainValue.ToString();
         }
 
         private void DistortionUI_FormClosing(object sender, FormClosingEventArgs e)

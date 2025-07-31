@@ -28,7 +28,6 @@ C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\obj\x64\Debug\Alphtech DSP.ex
 C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\obj\x64\Debug\Alphtech DSP.pdb
 C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\obj\x64\Debug\Alphtech DSP.exe.config
 C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\Alphtech DSP\obj\x64\Debug\AlphtechDSP.csproj.AssemblyReference.cache
-C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\Alphtech DSP\obj\x64\Debug\Alphtech DSP.exe.config
 C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\Alphtech DSP\obj\x64\Debug\AlphtechDSP.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\Alphtech DSP\obj\x64\Debug\Alphtech DSP.exe
 C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\Alphtech DSP\obj\x64\Debug\Alphtech DSP.pdb

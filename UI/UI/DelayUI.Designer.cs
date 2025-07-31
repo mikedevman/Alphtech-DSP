@@ -37,6 +37,9 @@
             label1 = new Label();
             mixDelay = new TrackBar();
             feedbackDelay = new TrackBar();
+            labelValueDelayTime = new Label();
+            labelValueDelayMix = new Label();
+            labelValueDelayFeedback = new Label();
             ((System.ComponentModel.ISupportInitialize)timeDelay).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mixDelay).BeginInit();
             ((System.ComponentModel.ISupportInitialize)feedbackDelay).BeginInit();
@@ -46,7 +49,7 @@
             // 
             buttonONDelay.BackColor = Color.DarkGray;
             buttonONDelay.Cursor = Cursors.Hand;
-            buttonONDelay.Location = new Point(210, 42);
+            buttonONDelay.Location = new Point(202, 42);
             buttonONDelay.Name = "buttonONDelay";
             buttonONDelay.Size = new Size(51, 40);
             buttonONDelay.TabIndex = 1;
@@ -84,7 +87,7 @@
             labelTimeDelay.BackColor = Color.FromArgb(41, 41, 41);
             labelTimeDelay.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             labelTimeDelay.ForeColor = Color.WhiteSmoke;
-            labelTimeDelay.Location = new Point(96, 101);
+            labelTimeDelay.Location = new Point(101, 101);
             labelTimeDelay.Name = "labelTimeDelay";
             labelTimeDelay.Size = new Size(50, 23);
             labelTimeDelay.TabIndex = 10;
@@ -115,9 +118,9 @@
             // 
             mixDelay.BackColor = Color.FromArgb(41, 41, 41);
             mixDelay.Cursor = Cursors.Hand;
-            mixDelay.Location = new Point(178, 127);
+            mixDelay.Location = new Point(173, 127);
             mixDelay.Name = "mixDelay";
-            mixDelay.Size = new Size(90, 56);
+            mixDelay.Size = new Size(95, 56);
             mixDelay.TabIndex = 13;
             mixDelay.Scroll += mixDelay_Scroll;
             // 
@@ -131,12 +134,51 @@
             feedbackDelay.TabIndex = 14;
             feedbackDelay.Scroll += feedbackDelay_Scroll;
             // 
+            // labelValueDelayTime
+            // 
+            labelValueDelayTime.AutoSize = true;
+            labelValueDelayTime.BackColor = Color.FromArgb(41, 41, 41);
+            labelValueDelayTime.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelValueDelayTime.ForeColor = Color.WhiteSmoke;
+            labelValueDelayTime.Location = new Point(114, 160);
+            labelValueDelayTime.Name = "labelValueDelayTime";
+            labelValueDelayTime.Size = new Size(20, 23);
+            labelValueDelayTime.TabIndex = 15;
+            labelValueDelayTime.Text = "1";
+            // 
+            // labelValueDelayMix
+            // 
+            labelValueDelayMix.AutoSize = true;
+            labelValueDelayMix.BackColor = Color.FromArgb(41, 41, 41);
+            labelValueDelayMix.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelValueDelayMix.ForeColor = Color.WhiteSmoke;
+            labelValueDelayMix.Location = new Point(213, 160);
+            labelValueDelayMix.Name = "labelValueDelayMix";
+            labelValueDelayMix.Size = new Size(20, 23);
+            labelValueDelayMix.TabIndex = 16;
+            labelValueDelayMix.Text = "0";
+            // 
+            // labelValueDelayFeedback
+            // 
+            labelValueDelayFeedback.AutoSize = true;
+            labelValueDelayFeedback.BackColor = Color.FromArgb(41, 41, 41);
+            labelValueDelayFeedback.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelValueDelayFeedback.ForeColor = Color.WhiteSmoke;
+            labelValueDelayFeedback.Location = new Point(312, 160);
+            labelValueDelayFeedback.Name = "labelValueDelayFeedback";
+            labelValueDelayFeedback.Size = new Size(20, 23);
+            labelValueDelayFeedback.TabIndex = 17;
+            labelValueDelayFeedback.Text = "0";
+            // 
             // DelayUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(444, 685);
+            Controls.Add(labelValueDelayFeedback);
+            Controls.Add(labelValueDelayMix);
+            Controls.Add(labelValueDelayTime);
             Controls.Add(feedbackDelay);
             Controls.Add(mixDelay);
             Controls.Add(label1);
@@ -164,5 +206,8 @@
         private Label label1;
         private TrackBar mixDelay;
         private TrackBar feedbackDelay;
+        private Label labelValueDelayTime;
+        private Label labelValueDelayMix;
+        private Label labelValueDelayFeedback;
     }
 }

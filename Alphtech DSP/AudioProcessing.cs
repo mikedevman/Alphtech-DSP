@@ -192,22 +192,6 @@ namespace AlphtechDSP
             return bytes;
         }
 
-        public void ApplyPreset(Preset preset)
-        {
-            chorus.SetEnabled(preset.ChorusEnabled);
-            chorus.SetMix(preset.ChorusMix);
-            chorus.SetRate(preset.ChorusRate);
-            chorus.SetDepth(preset.ChorusDepth);
-
-            delay.SetEnabled(preset.DelayEnabled);
-            delay.SetDelay(preset.DelayTime);
-            delay.SetMix(preset.DelayMix);
-            delay.SetFeedback(preset.DelayFeedback);
-
-            tremolo.SetEnabled(preset.TremoloEnabled);
-            tremolo.SetRate(preset.TremoloRate);
-            tremolo.SetDepth(preset.TremoloDepth);
-        }
 
         public void Dispose()
         {

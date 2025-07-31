@@ -52,6 +52,7 @@ namespace UI
             {
                 amp.SetBaseGain(gainValue);
             }
+            labelValueOverdriveGain.Text = gainValue.ToString();
         }
 
         private void OverdriveUI_FormClosing(object sender, FormClosingEventArgs e)

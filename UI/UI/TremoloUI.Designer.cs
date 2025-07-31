@@ -34,6 +34,8 @@
             labelRateTremolo = new Label();
             labelDepthTremolo = new Label();
             depthTremolo = new TrackBar();
+            labelValueTremoloRate = new Label();
+            labelValueTremoloDepth = new Label();
             ((System.ComponentModel.ISupportInitialize)rateTremolo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)depthTremolo).BeginInit();
             SuspendLayout();
@@ -94,12 +96,38 @@
             depthTremolo.TabIndex = 15;
             depthTremolo.Scroll += depthTremolo_Scroll;
             // 
+            // labelValueTremoloRate
+            // 
+            labelValueTremoloRate.AutoSize = true;
+            labelValueTremoloRate.BackColor = Color.FromArgb(59, 60, 61);
+            labelValueTremoloRate.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelValueTremoloRate.ForeColor = Color.WhiteSmoke;
+            labelValueTremoloRate.Location = new Point(168, 180);
+            labelValueTremoloRate.Name = "labelValueTremoloRate";
+            labelValueTremoloRate.Size = new Size(20, 23);
+            labelValueTremoloRate.TabIndex = 31;
+            labelValueTremoloRate.Text = "1";
+            // 
+            // labelValueTremoloDepth
+            // 
+            labelValueTremoloDepth.AutoSize = true;
+            labelValueTremoloDepth.BackColor = Color.FromArgb(59, 60, 61);
+            labelValueTremoloDepth.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelValueTremoloDepth.ForeColor = Color.WhiteSmoke;
+            labelValueTremoloDepth.Location = new Point(334, 180);
+            labelValueTremoloDepth.Name = "labelValueTremoloDepth";
+            labelValueTremoloDepth.Size = new Size(20, 23);
+            labelValueTremoloDepth.TabIndex = 32;
+            labelValueTremoloDepth.Text = "0";
+            // 
             // TremoloUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(531, 731);
+            Controls.Add(labelValueTremoloDepth);
+            Controls.Add(labelValueTremoloRate);
             Controls.Add(depthTremolo);
             Controls.Add(labelDepthTremolo);
             Controls.Add(labelRateTremolo);
@@ -120,5 +148,7 @@
         private Label labelRateTremolo;
         private Label labelDepthTremolo;
         private TrackBar depthTremolo;
+        private Label labelValueTremoloRate;
+        private Label labelValueTremoloDepth;
     }
 }

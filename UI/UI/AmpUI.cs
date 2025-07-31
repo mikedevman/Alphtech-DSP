@@ -155,6 +155,7 @@ namespace UI
             {
                 amp.SetVolume(Volume.Value / 100f);
             }
+            labelVolumeValue.Text = Volume.Value.ToString();
         }
 
         private void Gain_Scroll(object sender, EventArgs e)
@@ -163,6 +164,7 @@ namespace UI
             {
                 amp.SetBaseGain(Gain.Value / 100f);
             }
+            labelGainValue.Text = Gain.Value.ToString();
         }
 
         private void Treble_Scroll(object sender, EventArgs e)
@@ -171,6 +173,7 @@ namespace UI
             {
                 amp.SetTreble(Treble.Value / 100f);
             }
+            labelTrebleValue.Text = Treble.Value.ToString();
         }
 
         private void Mid_Scroll(object sender, EventArgs e)
@@ -179,6 +182,7 @@ namespace UI
             {
                 amp.SetMid(Mid.Value / 100f);
             }
+            labelMidValue.Text = Mid.Value.ToString();
         }
 
         private void Bass_Scroll(object sender, EventArgs e)
@@ -187,6 +191,7 @@ namespace UI
             {
                 amp.SetBass(Bass.Value / 100f);
             }
+            labelBassValue.Text = Bass.Value.ToString();
         }
 
         private void buttonDelay_Click(object sender, EventArgs e)
@@ -405,29 +410,62 @@ namespace UI
 
             string selected = choosePreset.SelectedItem.ToString();
             PresetType type = (PresetType)Enum.Parse(typeof(PresetType), selected);
-            Preset preset = PresetFactory.GetPreset(type);
+            Preset preset = Presets.GetPreset(type);
 
             amp.LoadState(preset);
-            audio.ApplyPreset(preset);
 
-            UpdateUIFromAmpState();
+            UpdateAmpUIState();
         }
 
-        private void UpdateUIFromAmpState()
+        private void UpdateAmpUIState()
         {
-            Volume.Value = (int)(amp.GetCurrentGain() * 100); 
-            Gain.Value = (int)(amp.GetUserBaseGain() * 100);
+            Volume.Value = Math.Clamp((int)(amp.GetCurrentGain() * 100), Volume.Minimum, Volume.Maximum);
+            Gain.Value = Math.Clamp((int)(amp.GetUserBaseGain() * 100), Gain.Minimum, Gain.Maximum);
 
             Treble.Value = (int)(amp.GetTreble() * 100);
             Mid.Value = (int)(amp.GetMid() * 100);
             Bass.Value = (int)(amp.GetBass() * 100);
 
-            if (delayWindow != null && !delayWindow.IsDisposed)
-                delayWindow.SetDelay(audio.GetDelay());
-            if (chorusWindow != null && !chorusWindow.IsDisposed)
-                chorusWindow.SetChorus(audio.GetChorus());
-            if (tremoloWindow != null && !tremoloWindow.IsDisposed)
-                tremoloWindow.SetTremolo(audio.GetTremolo());
+            labelVolumeValue.Text = Volume.Value.ToString();
+            labelGainValue.Text = Gain.Value.ToString();
+            labelTrebleValue.Text = Treble.Value.ToString();
+            labelMidValue.Text = Mid.Value.ToString();
+            labelBassValue.Text = Bass.Value.ToString();
+        }
+
+        private void buttonSavePreset_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text files (*.txt)|*.txt";
+            saveFileDialog.Title = "Save Preset";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var preset = new Alphtech_DSP.Preset
+                {
+                    BaseGain = Gain.Value / 100f,
+                    Volume = Volume.Value / 100f,
+                    Bass = Bass.Value / 100f,
+                    Mid = Mid.Value / 100f,
+                    Treble = Treble.Value / 100f
+                };
+                Alphtech_DSP.Presets.SavePresetToFile(preset, saveFileDialog.FileName);
+            }
+        }
+
+        private void buttonLoadCustomPreset_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.txt)|*.txt";
+            openFileDialog.Title = "Load Preset";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var preset = Alphtech_DSP.Presets.LoadPresetFromFile(openFileDialog.FileName);
+                if (preset != null)
+                {
+                    amp.LoadState(preset);
+                    UpdateAmpUIState();
+                }
+            }
         }
     }
 }

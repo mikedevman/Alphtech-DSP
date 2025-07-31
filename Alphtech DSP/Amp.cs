@@ -146,12 +146,6 @@ namespace AlphtechDSP
             SetBass(preset.Bass);
             SetMid(preset.Mid);
             SetTreble(preset.Treble);
-
-            EnableOverdrive(preset.OverdriveEnabled);
-            SetOverdriveLevel(preset.OverdriveLevel);
-
-            EnableDistortion(preset.DistortionEnabled);
-            SetDistortionLevel(preset.DistortionLevel);
         }
     }
 }

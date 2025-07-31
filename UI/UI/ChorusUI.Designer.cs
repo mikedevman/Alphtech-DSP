@@ -40,6 +40,11 @@
             chorusRate = new TrackBar();
             chorusDepth = new TrackBar();
             chorusMix = new TrackBar();
+            labelValueChorusBaseDelay = new Label();
+            labelValueChorusFeedback = new Label();
+            labelValueChorusRate = new Label();
+            labelValueChorusMix = new Label();
+            labelValueChorusDepth = new Label();
             ((System.ComponentModel.ISupportInitialize)chorusBaseDelay).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chorusFeedback).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chorusRate).BeginInit();
@@ -65,7 +70,7 @@
             labelMixChorus.BackColor = Color.FromArgb(25, 25, 26);
             labelMixChorus.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             labelMixChorus.ForeColor = Color.WhiteSmoke;
-            labelMixChorus.Location = new Point(202, 126);
+            labelMixChorus.Location = new Point(195, 116);
             labelMixChorus.Name = "labelMixChorus";
             labelMixChorus.Size = new Size(34, 19);
             labelMixChorus.TabIndex = 17;
@@ -89,7 +94,7 @@
             labelRateChorus.BackColor = Color.FromArgb(25, 25, 26);
             labelRateChorus.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             labelRateChorus.ForeColor = Color.WhiteSmoke;
-            labelRateChorus.Location = new Point(105, 126);
+            labelRateChorus.Location = new Point(105, 116);
             labelRateChorus.Name = "labelRateChorus";
             labelRateChorus.Size = new Size(39, 19);
             labelRateChorus.TabIndex = 19;
@@ -101,7 +106,7 @@
             labelDepthChorus.BackColor = Color.FromArgb(25, 25, 26);
             labelDepthChorus.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             labelDepthChorus.ForeColor = Color.WhiteSmoke;
-            labelDepthChorus.Location = new Point(290, 126);
+            labelDepthChorus.Location = new Point(277, 116);
             labelDepthChorus.Name = "labelDepthChorus";
             labelDepthChorus.Size = new Size(49, 19);
             labelDepthChorus.TabIndex = 20;
@@ -143,7 +148,7 @@
             // 
             chorusRate.BackColor = Color.FromArgb(24, 20, 20);
             chorusRate.Cursor = Cursors.Hand;
-            chorusRate.Location = new Point(81, 148);
+            chorusRate.Location = new Point(85, 138);
             chorusRate.Name = "chorusRate";
             chorusRate.Size = new Size(77, 56);
             chorusRate.TabIndex = 24;
@@ -153,9 +158,9 @@
             // 
             chorusDepth.BackColor = Color.FromArgb(24, 20, 20);
             chorusDepth.Cursor = Cursors.Hand;
-            chorusDepth.Location = new Point(272, 148);
+            chorusDepth.Location = new Point(260, 138);
             chorusDepth.Name = "chorusDepth";
-            chorusDepth.Size = new Size(76, 56);
+            chorusDepth.Size = new Size(79, 56);
             chorusDepth.TabIndex = 25;
             chorusDepth.Scroll += chorusDepth_Scroll;
             // 
@@ -163,11 +168,71 @@
             // 
             chorusMix.BackColor = Color.FromArgb(24, 20, 20);
             chorusMix.Cursor = Cursors.Hand;
-            chorusMix.Location = new Point(178, 148);
+            chorusMix.Location = new Point(168, 138);
             chorusMix.Name = "chorusMix";
-            chorusMix.Size = new Size(78, 56);
+            chorusMix.Size = new Size(85, 56);
             chorusMix.TabIndex = 26;
             chorusMix.Scroll += chorusMix_Scroll;
+            // 
+            // labelValueChorusBaseDelay
+            // 
+            labelValueChorusBaseDelay.AutoSize = true;
+            labelValueChorusBaseDelay.BackColor = Color.FromArgb(24, 20, 20);
+            labelValueChorusBaseDelay.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelValueChorusBaseDelay.ForeColor = Color.WhiteSmoke;
+            labelValueChorusBaseDelay.Location = new Point(105, 78);
+            labelValueChorusBaseDelay.Name = "labelValueChorusBaseDelay";
+            labelValueChorusBaseDelay.Size = new Size(30, 23);
+            labelValueChorusBaseDelay.TabIndex = 27;
+            labelValueChorusBaseDelay.Text = "10";
+            // 
+            // labelValueChorusFeedback
+            // 
+            labelValueChorusFeedback.AutoSize = true;
+            labelValueChorusFeedback.BackColor = Color.FromArgb(24, 20, 20);
+            labelValueChorusFeedback.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelValueChorusFeedback.ForeColor = Color.WhiteSmoke;
+            labelValueChorusFeedback.Location = new Point(291, 78);
+            labelValueChorusFeedback.Name = "labelValueChorusFeedback";
+            labelValueChorusFeedback.Size = new Size(20, 23);
+            labelValueChorusFeedback.TabIndex = 28;
+            labelValueChorusFeedback.Text = "0";
+            // 
+            // labelValueChorusRate
+            // 
+            labelValueChorusRate.AutoSize = true;
+            labelValueChorusRate.BackColor = Color.FromArgb(24, 20, 20);
+            labelValueChorusRate.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelValueChorusRate.ForeColor = Color.WhiteSmoke;
+            labelValueChorusRate.Location = new Point(114, 171);
+            labelValueChorusRate.Name = "labelValueChorusRate";
+            labelValueChorusRate.Size = new Size(20, 23);
+            labelValueChorusRate.TabIndex = 29;
+            labelValueChorusRate.Text = "1";
+            // 
+            // labelValueChorusMix
+            // 
+            labelValueChorusMix.AutoSize = true;
+            labelValueChorusMix.BackColor = Color.FromArgb(24, 20, 20);
+            labelValueChorusMix.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelValueChorusMix.ForeColor = Color.WhiteSmoke;
+            labelValueChorusMix.Location = new Point(201, 171);
+            labelValueChorusMix.Name = "labelValueChorusMix";
+            labelValueChorusMix.Size = new Size(20, 23);
+            labelValueChorusMix.TabIndex = 30;
+            labelValueChorusMix.Text = "0";
+            // 
+            // labelValueChorusDepth
+            // 
+            labelValueChorusDepth.AutoSize = true;
+            labelValueChorusDepth.BackColor = Color.FromArgb(24, 20, 20);
+            labelValueChorusDepth.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelValueChorusDepth.ForeColor = Color.WhiteSmoke;
+            labelValueChorusDepth.Location = new Point(291, 171);
+            labelValueChorusDepth.Name = "labelValueChorusDepth";
+            labelValueChorusDepth.Size = new Size(20, 23);
+            labelValueChorusDepth.TabIndex = 31;
+            labelValueChorusDepth.Text = "0";
             // 
             // ChorusUI
             // 
@@ -176,6 +241,11 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(448, 639);
+            Controls.Add(labelValueChorusDepth);
+            Controls.Add(labelValueChorusMix);
+            Controls.Add(labelValueChorusRate);
+            Controls.Add(labelValueChorusFeedback);
+            Controls.Add(labelValueChorusBaseDelay);
             Controls.Add(chorusMix);
             Controls.Add(chorusDepth);
             Controls.Add(chorusRate);
@@ -212,5 +282,10 @@
         private TrackBar chorusRate;
         private TrackBar chorusDepth;
         private TrackBar chorusMix;
+        private Label labelValueChorusBaseDelay;
+        private Label labelValueChorusFeedback;
+        private Label labelValueChorusRate;
+        private Label labelValueChorusMix;
+        private Label labelValueChorusDepth;
     }
 }
