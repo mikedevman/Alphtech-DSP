@@ -142,7 +142,7 @@ namespace UI
             if (amp != null)
             {
                 amp.SetVolume(Volume.Value / 100f);
-                amp.SetBaseGain(Gain.Value / 100f);
+                amp.SetGain(Gain.Value / 100f);
                 amp.SetTreble(Treble.Value / 100f);
                 amp.SetMid(Mid.Value / 100f);
                 amp.SetBass(Bass.Value / 100f);
@@ -162,7 +162,7 @@ namespace UI
         {
             if (amp != null)
             {
-                amp.SetBaseGain(Gain.Value / 100f);
+                amp.SetGain(Gain.Value / 100f);
             }
             labelGainValue.Text = Gain.Value.ToString();
         }
@@ -264,30 +264,42 @@ namespace UI
         {
             if (overdriveWindow == null)
             {
-                overdriveWindow = new OverdriveUI(amp);
-                overdriveWindow.Show();
+                if (audio != null)
+                {
+                    overdriveWindow = new OverdriveUI(audio.GetGainEffect());
+                    overdriveWindow.Show();
+                }
             }
-            if (overdriveWindow.IsDisposed)
+            if (overdriveWindow != null && overdriveWindow.IsDisposed)
             {
-                overdriveWindow = new OverdriveUI(amp);
+                overdriveWindow = new OverdriveUI(audio.GetGainEffect());
             }
-            overdriveWindow.Show();
-            overdriveWindow.BringToFront();
+            if (overdriveWindow != null)
+            {
+                overdriveWindow.Show();
+                overdriveWindow.BringToFront();
+            }
         }
 
         private void buttonDistortion_Click(object sender, EventArgs e)
         {
             if (distortionWindow == null)
             {
-                distortionWindow = new DistortionUI(amp);
-                distortionWindow.Show();
+                if (audio != null)
+                {
+                    distortionWindow = new DistortionUI(audio.GetGainEffect());
+                    distortionWindow.Show();
+                }
             }
-            if (distortionWindow.IsDisposed)
+            if (distortionWindow != null && distortionWindow.IsDisposed)
             {
-                distortionWindow = new DistortionUI(amp);
+                distortionWindow = new DistortionUI(audio.GetGainEffect());
             }
-            distortionWindow.Show();
-            distortionWindow.BringToFront();
+            if (distortionWindow != null)
+            {
+                distortionWindow.Show();
+                distortionWindow.BringToFront();
+            }
         }
 
         private void loadBackingTrack_Click(object sender, EventArgs e)
@@ -397,7 +409,7 @@ namespace UI
             {
                 string savedFile = audio.StopRecording();
                 record.Text = "Record";
-                record.BackColor = SystemColors.Control;
+                record.BackColor = Color.DarkGray;
 
                 System.Diagnostics.Process.Start("explorer.exe", @"C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\recordings");
             }
@@ -419,8 +431,8 @@ namespace UI
 
         private void UpdateAmpUIState()
         {
-            Volume.Value = Math.Clamp((int)(amp.GetCurrentGain() * 100), Volume.Minimum, Volume.Maximum);
-            Gain.Value = Math.Clamp((int)(amp.GetUserBaseGain() * 100), Gain.Minimum, Gain.Maximum);
+            Volume.Value = Math.Clamp((int)(amp.GetVolume() * 100), Volume.Minimum, Volume.Maximum);
+            Gain.Value = Math.Clamp((int)(amp.GetGain() * 100), Gain.Minimum, Gain.Maximum);
 
             Treble.Value = (int)(amp.GetTreble() * 100);
             Mid.Value = (int)(amp.GetMid() * 100);
@@ -442,7 +454,7 @@ namespace UI
             {
                 var preset = new Alphtech_DSP.Preset
                 {
-                    BaseGain = Gain.Value / 100f,
+                    Gain = Gain.Value / 100f,
                     Volume = Volume.Value / 100f,
                     Bass = Bass.Value / 100f,
                     Mid = Mid.Value / 100f,

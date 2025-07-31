@@ -40,7 +40,7 @@
             // 
             buttonONOverdrive.BackColor = Color.DarkGray;
             buttonONOverdrive.Cursor = Cursors.Hand;
-            buttonONOverdrive.Location = new Point(196, 50);
+            buttonONOverdrive.Location = new Point(192, 51);
             buttonONOverdrive.Name = "buttonONOverdrive";
             buttonONOverdrive.Size = new Size(51, 40);
             buttonONOverdrive.TabIndex = 3;
@@ -52,7 +52,7 @@
             // 
             Gain.BackColor = Color.FromArgb(20, 19, 19);
             Gain.Cursor = Cursors.Hand;
-            Gain.Location = new Point(173, 151);
+            Gain.Location = new Point(169, 152);
             Gain.Name = "Gain";
             Gain.Size = new Size(98, 56);
             Gain.TabIndex = 13;
@@ -64,7 +64,7 @@
             labelGain.BackColor = Color.FromArgb(20, 19, 19);
             labelGain.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             labelGain.ForeColor = Color.WhiteSmoke;
-            labelGain.Location = new Point(182, 125);
+            labelGain.Location = new Point(178, 126);
             labelGain.Name = "labelGain";
             labelGain.Size = new Size(46, 23);
             labelGain.TabIndex = 14;
@@ -76,7 +76,7 @@
             labelValueOverdriveGain.BackColor = Color.FromArgb(20, 19, 19);
             labelValueOverdriveGain.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             labelValueOverdriveGain.ForeColor = Color.WhiteSmoke;
-            labelValueOverdriveGain.Location = new Point(225, 125);
+            labelValueOverdriveGain.Location = new Point(221, 126);
             labelValueOverdriveGain.Name = "labelValueOverdriveGain";
             labelValueOverdriveGain.Size = new Size(35, 23);
             labelValueOverdriveGain.TabIndex = 33;
@@ -87,11 +87,13 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(441, 715);
             Controls.Add(labelValueOverdriveGain);
             Controls.Add(labelGain);
             Controls.Add(Gain);
             Controls.Add(buttonONOverdrive);
+            DoubleBuffered = true;
             Name = "OverdriveUI";
             Text = "OverdriveUI";
             FormClosing += OverdriveUI_FormClosing;

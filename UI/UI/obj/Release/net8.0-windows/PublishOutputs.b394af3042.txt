@@ -1,0 +1,15 @@
+C:\Users\Admin\Documents\Alphtech DSP\UI.exe
+C:\Users\Admin\Documents\Alphtech DSP\UI.dll
+C:\Users\Admin\Documents\Alphtech DSP\UI.deps.json
+C:\Users\Admin\Documents\Alphtech DSP\UI.runtimeconfig.json
+C:\Users\Admin\Documents\Alphtech DSP\UI.pdb
+C:\Users\Admin\Documents\Alphtech DSP\NAudio.dll
+C:\Users\Admin\Documents\Alphtech DSP\NAudio.Asio.dll
+C:\Users\Admin\Documents\Alphtech DSP\NAudio.Core.dll
+C:\Users\Admin\Documents\Alphtech DSP\NAudio.Midi.dll
+C:\Users\Admin\Documents\Alphtech DSP\NAudio.Wasapi.dll
+C:\Users\Admin\Documents\Alphtech DSP\NAudio.WinForms.dll
+C:\Users\Admin\Documents\Alphtech DSP\NAudio.WinMM.dll
+C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP.exe
+C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP.pdb
+C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP.exe.config

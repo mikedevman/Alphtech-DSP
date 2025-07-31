@@ -1,13 +1,12 @@
-﻿using NAudio.Dsp;
+﻿using Alphtech_DSP;
+using NAudio.Dsp;
 using System;
-using Alphtech_DSP;
 
 namespace AlphtechDSP
 {
     public class Amp
     {
-        private GainEffect gain;
-        private float userBaseGain = 1.0f;
+        private Gain gain = new Gain();
         private float volume;
         private BiQuadFilter bassFilter;
         private BiQuadFilter midFilter;
@@ -18,53 +17,33 @@ namespace AlphtechDSP
 
         public Amp()
         {
-            gain = new GainEffect();
-            SetBaseGain(0.1f);
+            SetGain(0.1f);
             SetVolume(5.0f);
             SetBass(0.5f);
             SetMid(0.5f);
             SetTreble(0.5f);
         }
 
-        public void SetBaseGain(float value)
+        public void SetGain(float value)
         {
-            userBaseGain = 0.1f + (value * 4.9f);
-            gain.SetBaseGain(userBaseGain);
+            // Scales slider value [0, 1] to gain range [0.1, 5.0]
+            float scaledGain = 0.1f + (value * 4.9f);
+            gain.SetGain(scaledGain);
         }
 
-        public float GetUserBaseGain()
-        {
-            return userBaseGain;
-        }
-
-        public float GetCurrentGain()
+        public float GetGain()
         {
             return gain.GetGain();
-        }
-
-        public void EnableOverdrive(bool enabled)
-        {
-            gain.EnableOverdrive(enabled);
-        }
-
-        public void SetOverdriveLevel(float level)
-        {
-            gain.SetOverdriveGain(level);
-        }
-
-        public void EnableDistortion(bool enabled)
-        {
-            gain.EnableDistortion(enabled);
-        }
-
-        public void SetDistortionLevel(float level)
-        {
-            gain.SetDistortionGain(level);
         }
 
         public void SetVolume(float value)
         {
             volume = Math.Max(0f, Math.Min(10f, value));
+        }
+
+        public float GetVolume()
+        {
+            return volume;
         }
 
         public void SetBass(float value)
@@ -139,8 +118,8 @@ namespace AlphtechDSP
 
         public void LoadState(Preset preset)
         {
-            float baseGainSlider = (preset.BaseGain - 0.1f) / 4.9f;
-            SetBaseGain(baseGainSlider);
+            float gainSlider = (preset.Gain - 0.1f) / 4.9f;
+            SetGain(gainSlider);
 
             SetVolume(preset.Volume);
             SetBass(preset.Bass);

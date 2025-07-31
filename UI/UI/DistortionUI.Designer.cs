@@ -87,11 +87,13 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(392, 634);
+            BackgroundImageLayout = ImageLayout.Zoom;
+            ClientSize = new Size(391, 634);
             Controls.Add(labelValueDistortionGain);
             Controls.Add(Gain);
             Controls.Add(labelGain);
             Controls.Add(buttonONDistortion);
+            DoubleBuffered = true;
             Name = "DistortionUI";
             Text = "DistortionUI";
             FormClosing += DistortionUI_FormClosing;

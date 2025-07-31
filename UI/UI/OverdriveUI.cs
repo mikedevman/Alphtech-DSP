@@ -4,36 +4,33 @@ namespace UI
 {
     public partial class OverdriveUI : Form
     {
-        private Amp amp;
+        private GainEffect gainEffect;
         private bool isOverdriveOn = false;
-        private float overdriveLevel = 1.0f;
+        private float overdriveGain = 0.1f;
 
-        public OverdriveUI(Amp ampInstance)
+        public OverdriveUI(GainEffect gainEffectInstance)
         {
             InitializeComponent();
-            amp = ampInstance;
-            Gain.Minimum = 10;    
-            Gain.Maximum = 1000;  
-            Gain.Value = 100;
-
-            float baseGain = Gain.Value / 100.0f;
-            amp.SetBaseGain(baseGain);
+            gainEffect = gainEffectInstance;
+            Gain.Minimum = 10;
+            Gain.Maximum = 1000;
+            Gain.Value = 10;
         }
 
         private void buttonONOverdrive_Click(object sender, EventArgs e)
         {
-            if (isOverdriveOn == false)
+            if (!isOverdriveOn)
             {
                 isOverdriveOn = true;
-                amp.SetOverdriveLevel(overdriveLevel); 
-                amp.EnableOverdrive(true);
+                gainEffect.EnableOverdrive(true);
+                gainEffect.SetOverdriveGain(overdriveGain);
                 buttonONOverdrive.BackColor = Color.Red;
                 buttonONOverdrive.Text = "ON";
             }
             else
             {
                 isOverdriveOn = false;
-                amp.EnableOverdrive(false);
+                gainEffect.EnableOverdrive(false);
                 buttonONOverdrive.BackColor = Color.DarkGray;
                 buttonONOverdrive.Text = "OFF";
             }
@@ -42,15 +39,14 @@ namespace UI
         private void Gain_Scroll(object sender, EventArgs e)
         {
             float gainValue = Gain.Value / 100.0f;
-
             if (isOverdriveOn)
             {
-                overdriveLevel = gainValue; 
-                amp.SetOverdriveLevel(overdriveLevel);
+                overdriveGain = gainValue;
+                gainEffect.SetOverdriveGain(overdriveGain);
             }
             else
             {
-                amp.SetBaseGain(gainValue);
+                overdriveGain = 0.0f;
             }
             labelValueOverdriveGain.Text = gainValue.ToString();
         }
@@ -59,7 +55,8 @@ namespace UI
         {
             if (isOverdriveOn)
             {
-                amp.EnableOverdrive(false);
+                gainEffect.EnableOverdrive(false);
+                gainEffect.SetOverdriveGain(0.0f);
                 isOverdriveOn = false;
             }
         }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Alphtech_DSP;
 using NAudio.Wave;
 
 namespace AlphtechDSP
@@ -13,6 +12,7 @@ namespace AlphtechDSP
         private BufferedWaveProvider buffer;
         private List<AudioEffect> effects;
         private Amp amp;
+        private GainEffect gainEffect;
         private Delay delay;
         private Chorus chorus;
         private Tremolo tremolo;
@@ -25,6 +25,7 @@ namespace AlphtechDSP
         {
             effects = new List<AudioEffect>();
             amp = new Amp();
+            gainEffect = new GainEffect();
             delay = new Delay();
             chorus = new Chorus();
             tremolo = new Tremolo();
@@ -53,6 +54,20 @@ namespace AlphtechDSP
         public Amp GetAmp()
         {
             return amp;
+        }
+
+        public GainEffect GetGainEffect()
+        {
+            return gainEffect;
+        }
+
+        public void Process(float[] buffer)
+        {
+            // First: apply amp gain, EQ, and volume
+            amp.Process(buffer);
+
+            // Then: apply overdrive and/or distortion
+            gainEffect.Process(buffer);
         }
 
         public Delay GetDelay()
@@ -155,6 +170,7 @@ namespace AlphtechDSP
             }
 
             amp.Process(samples);
+            gainEffect.Process(samples);
 
             byte[] outputBytes = ConvertToByte(samples);
             buffer.AddSamples(outputBytes, 0, outputBytes.Length);

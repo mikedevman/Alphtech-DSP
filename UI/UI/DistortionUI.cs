@@ -4,35 +4,34 @@ namespace UI
 {
     public partial class DistortionUI : Form
     {
-        private Amp amp;
+        private GainEffect gainEffect;
         private bool isDistortionOn = false;
-        private float distortionLevel = 1.0f;
-        public DistortionUI(Amp ampInstance)
+        private float distortionGain = 0.1f;
+
+        public DistortionUI(GainEffect gainEffectInstance)
         {
             InitializeComponent();
-            amp = ampInstance;
+            gainEffect = gainEffectInstance;
             Gain.Minimum = 10;
             Gain.Maximum = 1000;
-            Gain.Value = 100;
+            Gain.Value = 10;
 
-            float baseGain = Gain.Value / 100.0f;
-            amp.SetBaseGain(baseGain);
         }
 
         private void buttonONDistortion_Click(object sender, EventArgs e)
         {
-            if (isDistortionOn == false)
+            if (!isDistortionOn)
             {
                 isDistortionOn = true;
-                amp.SetDistortionLevel(distortionLevel);
-                amp.EnableDistortion(true);
+                gainEffect.EnableDistortion(true);
+                gainEffect.SetDistortionGain(distortionGain);
                 buttonONDistortion.BackColor = Color.Red;
                 buttonONDistortion.Text = "ON";
             }
             else
             {
                 isDistortionOn = false;
-                amp.EnableDistortion(false);
+                gainEffect.EnableDistortion(false);
                 buttonONDistortion.BackColor = Color.DarkGray;
                 buttonONDistortion.Text = "OFF";
             }
@@ -42,15 +41,14 @@ namespace UI
         private void Gain_Scroll(object sender, EventArgs e)
         {
             float gainValue = Gain.Value / 100.0f;
-
             if (isDistortionOn)
             {
-                distortionLevel = gainValue;
-                amp.SetDistortionLevel(distortionLevel);
+                distortionGain = gainValue;
+                gainEffect.SetDistortionGain(distortionGain);
             }
             else
             {
-                amp.SetBaseGain(gainValue);
+                distortionGain = 0.0f;
             }
             labelValueDistortionGain.Text = gainValue.ToString();
         }
@@ -59,7 +57,8 @@ namespace UI
         {
             if (isDistortionOn)
             {
-                amp.EnableDistortion(false);
+                gainEffect.EnableDistortion(false);
+                gainEffect.SetDistortionGain(0.0f);
                 isDistortionOn = false;
             }
         }

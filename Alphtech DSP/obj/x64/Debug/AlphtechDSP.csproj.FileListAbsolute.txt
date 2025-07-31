@@ -55,3 +55,4 @@ C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\Alphtech DSP\bin\x64\Debug\NA
 C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\Alphtech DSP\bin\x64\Debug\System.Security.AccessControl.xml
 C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\Alphtech DSP\bin\x64\Debug\System.Security.Principal.Windows.xml
 C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\Alphtech DSP\obj\x64\Debug\Alphtech.FFD019DF.Up2Date
+C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\Alphtech DSP\obj\x64\Debug\Alphtech DSP.exe.config

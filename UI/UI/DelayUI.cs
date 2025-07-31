@@ -1,5 +1,4 @@
 ﻿using AlphtechDSP;
-using Alphtech_DSP;
 
 namespace UI
 {

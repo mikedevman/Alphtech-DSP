@@ -49,7 +49,7 @@
             // 
             buttonONDelay.BackColor = Color.DarkGray;
             buttonONDelay.Cursor = Cursors.Hand;
-            buttonONDelay.Location = new Point(202, 42);
+            buttonONDelay.Location = new Point(202, 40);
             buttonONDelay.Name = "buttonONDelay";
             buttonONDelay.Size = new Size(51, 40);
             buttonONDelay.TabIndex = 1;
@@ -175,6 +175,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(444, 685);
             Controls.Add(labelValueDelayFeedback);
             Controls.Add(labelValueDelayMix);
@@ -187,6 +188,7 @@
             Controls.Add(labelFeedbackDelay);
             Controls.Add(labelMixDelay);
             Controls.Add(buttonONDelay);
+            DoubleBuffered = true;
             Name = "DelayUI";
             Text = "DelayUI";
             ((System.ComponentModel.ISupportInitialize)timeDelay).EndInit();

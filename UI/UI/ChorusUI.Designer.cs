@@ -239,7 +239,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            BackgroundImageLayout = ImageLayout.Stretch;
+            BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(448, 639);
             Controls.Add(labelValueChorusDepth);
             Controls.Add(labelValueChorusMix);

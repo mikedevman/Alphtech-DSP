@@ -125,6 +125,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(531, 731);
             Controls.Add(labelValueTremoloDepth);
             Controls.Add(labelValueTremoloRate);
@@ -133,6 +134,7 @@
             Controls.Add(labelRateTremolo);
             Controls.Add(rateTremolo);
             Controls.Add(buttonONTremolo);
+            DoubleBuffered = true;
             Name = "TremoloUI";
             Text = "Tremolo";
             ((System.ComponentModel.ISupportInitialize)rateTremolo).EndInit();

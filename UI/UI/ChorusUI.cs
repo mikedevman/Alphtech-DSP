@@ -30,6 +30,16 @@ namespace UI
             chorusBaseDelay.Minimum = 10;
             chorusBaseDelay.Maximum = 200;
             chorusBaseDelay.Value = 10;
+
+            this.FormClosing += ChorusUI_FormClosing;
+        }
+
+        private void ChorusUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (chorus != null && isChorusOn)
+            {
+                chorus.SetEnabled(false);
+            }
         }
 
         public void SetChorus(Chorus chorusEffect)

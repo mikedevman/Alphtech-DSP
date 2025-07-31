@@ -1,64 +1,47 @@
-﻿using AlphtechDSP;
+﻿using System;
 
-public class GainEffect : Gain
+namespace AlphtechDSP
 {
-    private bool overdriveEnabled = false;
-    private bool distortionEnabled = false;
-
-    private float baseGain = 1.0f;
-    private float overdriveGain = 1.0f;
-    private float distortionGain = 1.0f;
-
-    public void SetBaseGain(float value)
+    public class GainEffect
     {
-        baseGain = value;
-        UpdateEffectiveGain();
-    }
+        private Gain overdrive = new Gain();
+        private Gain distortion = new Gain();
+        private bool overdriveEnabled = false;
+        private bool distortionEnabled = false;
 
-    public void SetOverdriveGain(float value)
-    {
-        overdriveGain = value;
-        if (overdriveEnabled)
+        public void EnableOverdrive(bool enabled)
         {
-            UpdateEffectiveGain();
-        }
-    }
-
-    public void SetDistortionGain(float value)
-    {
-        distortionGain = value;
-        if (distortionEnabled)
-        {
-            UpdateEffectiveGain();
-        }
-    }
-
-    public void EnableOverdrive(bool enabled)
-    {
-        overdriveEnabled = enabled;
-        UpdateEffectiveGain();
-    }
-
-    public void EnableDistortion(bool enabled)
-    {
-        distortionEnabled = enabled;
-        UpdateEffectiveGain();
-    }
-
-    private void UpdateEffectiveGain()
-    {
-        float totalGain = baseGain;
-
-        if (overdriveEnabled)
-        {
-            totalGain *= overdriveGain * 3.0f;
+            overdriveEnabled = enabled;
         }
 
-        if (distortionEnabled)
+        public void SetOverdriveGain(float value)
         {
-            totalGain *= distortionGain * 8.0f;
+            float gainValue = 1.0f + (value * 19.0f); // maps 0.0–1.0 to 1.0–20.0
+            overdrive.SetGain(gainValue);
         }
 
-        SetGain(totalGain);
+        public void EnableDistortion(bool enabled)
+        {
+            distortionEnabled = enabled;
+        }
+
+        public void SetDistortionGain(float value)
+        {
+            float gainValue = 4.0f + (value * 19.0f);
+            distortion.SetGain(gainValue);
+        }
+
+        public void Process(float[] buffer)
+        {
+            if (overdriveEnabled)
+            {
+                overdrive.Process(buffer);
+            }
+
+            if (distortionEnabled)
+            {
+                distortion.Process(buffer);
+            }
+        }
     }
 }

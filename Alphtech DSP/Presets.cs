@@ -25,7 +25,7 @@ namespace Alphtech_DSP
     {
         public PresetType Type { get; set; }
 
-        public float BaseGain { get; set; }
+        public float Gain { get; set; }
         public float Volume { get; set; }
         public float Bass { get; set; }
         public float Mid { get; set; }
@@ -47,7 +47,7 @@ namespace Alphtech_DSP
                     return new Preset
                     {
                         Type = guitaristPreset,
-                        BaseGain = 0.6f,
+                        Gain = 0.6f,
                         Volume = 5.0f,
                         Bass = 0.65f,
                         Mid = 0.6f,
@@ -58,7 +58,7 @@ namespace Alphtech_DSP
                     return new Preset
                     {
                         Type = guitaristPreset,
-                        BaseGain = 1.2f,
+                        Gain = 1.2f,
                         Volume = 6.5f,
                         Bass = 0.55f,
                         Mid = 0.7f,
@@ -69,7 +69,7 @@ namespace Alphtech_DSP
                     return new Preset
                     {
                         Type = guitaristPreset,
-                        BaseGain = 1.0f,
+                        Gain = 1.0f,
                         Volume = 7.0f,
                         Bass = 0.75f,
                         Mid = 0.65f,
@@ -80,7 +80,7 @@ namespace Alphtech_DSP
                     return new Preset
                     {
                         Type = guitaristPreset,
-                        BaseGain = 0.5f,
+                        Gain = 0.5f,
                         Volume = 4.5f,
                         Bass = 0.5f,
                         Mid = 0.4f,
@@ -91,7 +91,7 @@ namespace Alphtech_DSP
                     return new Preset
                     {
                         Type = guitaristPreset,
-                        BaseGain = 1.4f,
+                        Gain = 1.4f,
                         Volume = 6.0f,
                         Bass = 0.6f,
                         Mid = 0.55f,
@@ -107,7 +107,7 @@ namespace Alphtech_DSP
         {
             using (StreamWriter writer = new StreamWriter(filePath, false))
             {
-                writer.WriteLine($"BaseGain={preset.BaseGain}");
+                writer.WriteLine($"BaseGain={preset.Gain}");
                 writer.WriteLine($"Volume={preset.Volume}");
                 writer.WriteLine($"Bass={preset.Bass}");
                 writer.WriteLine($"Mid={preset.Mid}");
@@ -133,7 +133,7 @@ namespace Alphtech_DSP
                 switch (parameter)
                 {
                     case PresetParameter.BaseGain:
-                        preset.BaseGain = parsedValue;
+                        preset.Gain = parsedValue;
                         break;
                     case PresetParameter.Volume:
                         preset.Volume = parsedValue;
