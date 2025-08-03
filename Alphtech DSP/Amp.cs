@@ -24,9 +24,9 @@ namespace AlphtechDSP
             SetTreble(0.5f);
         }
 
+        // sets gain scale from 0.1 to 5.0
         public void SetGain(float value)
         {
-            // Scales slider value [0, 1] to gain range [0.1, 5.0]
             float scaledGain = 0.1f + (value * 4.9f);
             gain.SetGain(scaledGain);
         }
@@ -36,6 +36,7 @@ namespace AlphtechDSP
             return gain.GetGain();
         }
 
+        // sets volume scale from 0.0 to 10.0
         public void SetVolume(float value)
         {
             volume = Math.Max(0f, Math.Min(10f, value));
@@ -46,6 +47,7 @@ namespace AlphtechDSP
             return volume;
         }
 
+        // set bass value from 0.0 to 1.0
         public void SetBass(float value)
         {
             float bassValue = (value - 0.5f) * 24f;
@@ -58,6 +60,7 @@ namespace AlphtechDSP
             return lastBassValue;
         }
 
+        // set mid value from 0.0 to 1.0
         public void SetMid(float value)
         {
             float midValue = (value - 0.5f) * 24f;
@@ -70,6 +73,7 @@ namespace AlphtechDSP
             return lastMidValue;
         }
 
+        // set treble value from 0.0 to 1.0
         public void SetTreble(float value)
         {
             float trebleValue = (value - 0.5f) * 24f;
@@ -97,10 +101,13 @@ namespace AlphtechDSP
             return trebleFilter;
         }
 
+        // applies the gain, volume, and EQ filters to the audio buffer
         public void Process(float[] buffer)
         {
+            // apply gain first
             gain.Process(buffer);
 
+            // loop through the buffer and apply the filters
             for (int i = 0; i < buffer.Length; i++)
             {
                 float sample = buffer[i];
@@ -109,6 +116,7 @@ namespace AlphtechDSP
                 sample = midFilter.Transform(sample);
                 sample = trebleFilter.Transform(sample);
 
+                // apply volume scaling 
                 sample *= volume;
                 sample = Math.Max(-1f, Math.Min(1f, sample));
 
@@ -116,8 +124,10 @@ namespace AlphtechDSP
             }
         }
 
+        // loads the state from a Preset object
         public void LoadState(Preset preset)
         {
+            // gain is scaled from 0.1 to 5.0
             float gainSlider = (preset.Gain - 0.1f) / 4.9f;
             SetGain(gainSlider);
 

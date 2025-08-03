@@ -57,10 +57,12 @@ namespace UI
             Application.VisualStyleState = System.Windows.Forms.VisualStyles.VisualStyleState.NoneEnabled;
         }
 
+        // button to turn the amplifier on or off
         private void buttonON_Click(object sender, EventArgs e)
         {
             if (isPoweredOn == false)
             {
+                // if amplifier is on, start effect instances and set the button state
                 if (audio != null)
                 {
                     Delay currentDelay = audio.GetDelay();
@@ -73,10 +75,12 @@ namespace UI
                     tremoloWasEnabled = currentTremolo.GetEnabled();
                 }
 
+                // create a new AudioProcessing instance and set the amp settings
                 audio = new AudioProcessing();
                 amp = audio.GetAmp();
                 UpdateAmpSettings();
 
+                // create and add effects to the audio processing chain
                 Delay delay = audio.GetDelay();
                 delay.SetEnabled(delayWasEnabled);
 
@@ -86,11 +90,13 @@ namespace UI
                 Tremolo tremolo = audio.GetTremolo();
                 tremolo.SetEnabled(tremoloWasEnabled);
 
+                // start the audio processing
                 audio.Start();
                 buttonON.BackColor = Color.Red;
                 buttonON.Text = "ON";
                 isPoweredOn = true;
 
+                // update the UI for delay, chorus, and tremolo windows if they are open
                 if (delayWindow != null)
                 {
                     if (delayWindow.IsDisposed == false)
@@ -129,6 +135,7 @@ namespace UI
                     tremoloWasEnabled = currentTremolo.GetEnabled();
                 }
 
+                // if amplifier is off, stop the audio processing and dispose of the audio instance
                 audio.Stop();
                 audio.Dispose();
                 buttonON.BackColor = Color.DarkGray;
@@ -137,6 +144,7 @@ namespace UI
             }
         }
 
+        // update the amplifier settings based on the UI controls
         private void UpdateAmpSettings()
         {
             if (amp != null)
@@ -149,6 +157,7 @@ namespace UI
             }
         }
 
+        // trackbar scroll for volume
         private void Volume_Scroll(object sender, EventArgs e)
         {
             if (amp != null)
@@ -158,6 +167,7 @@ namespace UI
             labelVolumeValue.Text = Volume.Value.ToString();
         }
 
+        // trackbar scroll for gain
         private void Gain_Scroll(object sender, EventArgs e)
         {
             if (amp != null)
@@ -167,6 +177,7 @@ namespace UI
             labelGainValue.Text = Gain.Value.ToString();
         }
 
+        // trackbar scroll for treble
         private void Treble_Scroll(object sender, EventArgs e)
         {
             if (amp != null)
@@ -176,6 +187,7 @@ namespace UI
             labelTrebleValue.Text = Treble.Value.ToString();
         }
 
+        // trackbar scroll for mid
         private void Mid_Scroll(object sender, EventArgs e)
         {
             if (amp != null)
@@ -185,6 +197,7 @@ namespace UI
             labelMidValue.Text = Mid.Value.ToString();
         }
 
+        // trackbar scroll for bass
         private void Bass_Scroll(object sender, EventArgs e)
         {
             if (amp != null)
@@ -194,6 +207,7 @@ namespace UI
             labelBassValue.Text = Bass.Value.ToString();
         }
 
+        // button to open the delay effect UI
         private void buttonDelay_Click(object sender, EventArgs e)
         {
             if (delayWindow == null)
@@ -216,6 +230,7 @@ namespace UI
             }
         }
 
+        // button to open the chorus effect UI
         private void buttonChorus_Click(object sender, EventArgs e)
         {
             if (chorusWindow == null)
@@ -238,6 +253,7 @@ namespace UI
             }
         }
 
+        // button to open the tremolo effect UI
         private void buttonTremolo_Click(object sender, EventArgs e)
         {
             if (tremoloWindow == null)
@@ -260,6 +276,7 @@ namespace UI
             }
         }
 
+        // button to open the overdrive effect UI
         private void buttonOverdrive_Click(object sender, EventArgs e)
         {
             if (overdriveWindow == null)
@@ -281,6 +298,7 @@ namespace UI
             }
         }
 
+        // button to open the distortion effect UI
         private void buttonDistortion_Click(object sender, EventArgs e)
         {
             if (distortionWindow == null)
@@ -302,14 +320,18 @@ namespace UI
             }
         }
 
+        // button to load a backing track
         private void loadBackingTrack_Click(object sender, EventArgs e)
         {
+            // create an OpenFileDialog to select a WAV file
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "WAV files (*.wav) |*.wav;";
             openFileDialog.InitialDirectory = @"C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\backing tracks";
 
+            // show the dialog and check if a file was selected
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                // if an output device is already playing, stop it and dispose of it
                 if (outputDevice != null)
                 {
                     outputDevice.Stop();
@@ -318,11 +340,14 @@ namespace UI
                     playBackingTrack.BackColor = Color.LightGreen;
                     playBackingTrack.Text = "Play";
                 }
+
+                // select the file and update the label to show the file name
                 selectedFilePath = openFileDialog.FileName;
                 labelLoadedFile.Text = Path.GetFileName(selectedFilePath);
             }
         }
 
+        // update the label text when the loaded file changes
         private void labelLoadedFile_TextChanged(object sender, EventArgs e)
         {
             Label label = sender as Label;
@@ -333,8 +358,10 @@ namespace UI
             }
         }
 
+        // button to play or pause the backing track
         private void playBackingTrack_Click(object sender, EventArgs e)
         {
+            // check if a file is selected, if not return
             if (string.IsNullOrEmpty(selectedFilePath))
             {
                 return;
@@ -342,8 +369,8 @@ namespace UI
 
             try
             {
+                // if the output device is null, create a new AudioFileReader and WaveOutEvent
                 Button button = sender as Button;
-
                 if (outputDevice != null && outputDevice.PlaybackState == PlaybackState.Playing)
                 {
                     outputDevice.Pause();
@@ -375,6 +402,7 @@ namespace UI
             }
         }
 
+        // trackbar scroll for backing track volume
         private void volumeBackingTrack_Scroll(object sender, EventArgs e)
         {
             if (outputDevice != null)
@@ -387,6 +415,7 @@ namespace UI
             }
         }
 
+        // button to record audio
         private void record_Click(object sender, EventArgs e)
         {
             if (audio == null)
@@ -399,6 +428,7 @@ namespace UI
                 return;
             }
 
+            // check if the audio is already recording, if not start recording, otherwise stop recording
             if (!audio.IsRecording)
             {
                 audio.StartRecording();
@@ -411,10 +441,12 @@ namespace UI
                 record.Text = "Record";
                 record.BackColor = Color.DarkGray;
 
+                // show a message box with the saved file path
                 System.Diagnostics.Process.Start("explorer.exe", @"C:\Users\Admin\Documents\Alphtech DSP\Alphtech DSP\recordings");
             }
         }
 
+        // choose a preset from the dropdown
         private void choosePreset_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (choosePreset.SelectedIndex == 0)
@@ -424,13 +456,17 @@ namespace UI
             PresetType type = (PresetType)Enum.Parse(typeof(PresetType), selected);
             Preset preset = Presets.GetPreset(type);
 
+            // apply the selected preset to the amplifier
             amp.LoadState(preset);
 
+            // update the amp UI to reflect the preset changes
             UpdateAmpUIState();
         }
 
+        // update the UI state of the amplifier
         private void UpdateAmpUIState()
         {
+            // clamp volume and gain to their respective ranges
             Volume.Value = Math.Clamp((int)(amp.GetVolume() * 100), Volume.Minimum, Volume.Maximum);
             Gain.Value = Math.Clamp((int)(amp.GetGain() * 100), Gain.Minimum, Gain.Maximum);
 
@@ -438,6 +474,7 @@ namespace UI
             Mid.Value = (int)(amp.GetMid() * 100);
             Bass.Value = (int)(amp.GetBass() * 100);
 
+            // update the labels to show the current values
             labelVolumeValue.Text = Volume.Value.ToString();
             labelGainValue.Text = Gain.Value.ToString();
             labelTrebleValue.Text = Treble.Value.ToString();
@@ -445,6 +482,7 @@ namespace UI
             labelBassValue.Text = Bass.Value.ToString();
         }
 
+        // button to save the current preset
         private void buttonSavePreset_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -452,6 +490,7 @@ namespace UI
             saveFileDialog.Title = "Save Preset";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
+                // create a new preset with the current amplifier settings and save it to a file
                 var preset = new Alphtech_DSP.Preset
                 {
                     Gain = Gain.Value / 100f,
@@ -464,6 +503,7 @@ namespace UI
             }
         }
 
+        // button to load a custom preset from a file
         private void buttonLoadCustomPreset_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -474,6 +514,7 @@ namespace UI
                 var preset = Alphtech_DSP.Presets.LoadPresetFromFile(openFileDialog.FileName);
                 if (preset != null)
                 {
+                    // load the preset into the amplifier and update the UI state
                     amp.LoadState(preset);
                     UpdateAmpUIState();
                 }

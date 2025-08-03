@@ -26,6 +26,7 @@ namespace UI
             this.FormClosing += DelayUI_FormClosing;
         }
 
+        // close delay UI and disable delay effect
         private void DelayUI_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (delay != null && isDelayOn)
@@ -35,15 +36,18 @@ namespace UI
             }
         }
 
+        // set delay effect
         public void SetDelay(Delay delayEffect)
         {
             delay = delayEffect;
         }
 
+        // turn delay effect on or off
         private void buttonONDelay_Click(object sender, EventArgs e)
         {
             if (!isDelayOn)
             {
+                // update delay settings before enabling
                 UpdateDelaySettings();
                 if (delay != null)
                 {
@@ -65,6 +69,7 @@ namespace UI
             }
         }
 
+        // update delay settings based on UI controls
         private void UpdateDelaySettings()
         {
             if (delay != null)
@@ -75,7 +80,7 @@ namespace UI
             }
         }
 
-        
+        // trackbar scroll for time
         private void timeDelay_Scroll(object sender, EventArgs e)
         {
             if (delay != null)
@@ -85,6 +90,7 @@ namespace UI
             labelValueDelayTime.Text = timeDelay.Value.ToString();
         }
 
+        // trackbar scroll for mix
         private void mixDelay_Scroll(object sender, EventArgs e)
         {
             if (delay != null)
@@ -94,6 +100,7 @@ namespace UI
             labelValueDelayMix.Text = mixDelay.Value.ToString();
         }
 
+        // trackbar scroll for feedback
         private void feedbackDelay_Scroll(object sender, EventArgs e)
         {
             if (delay != null)

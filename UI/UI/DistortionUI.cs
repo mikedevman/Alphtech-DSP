@@ -18,6 +18,7 @@ namespace UI
 
         }
 
+        // turn distortion effect on or off
         private void buttonONDistortion_Click(object sender, EventArgs e)
         {
             if (!isDistortionOn)
@@ -38,6 +39,7 @@ namespace UI
 
         }
 
+        // trackbar to set distortion gain
         private void Gain_Scroll(object sender, EventArgs e)
         {
             float gainValue = Gain.Value / 100.0f;
@@ -53,6 +55,7 @@ namespace UI
             labelValueDistortionGain.Text = gainValue.ToString();
         }
 
+        // close distortion UI and disable distortion effect
         private void DistortionUI_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (isDistortionOn)

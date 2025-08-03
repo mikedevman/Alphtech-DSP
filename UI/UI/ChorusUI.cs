@@ -34,6 +34,7 @@ namespace UI
             this.FormClosing += ChorusUI_FormClosing;
         }
 
+        // close chorus UI and disable chorus effect 
         private void ChorusUI_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (chorus != null && isChorusOn)
@@ -42,6 +43,7 @@ namespace UI
             }
         }
 
+        // set chorus effect
         public void SetChorus(Chorus chorusEffect)
         {
             chorus = chorusEffect;
@@ -52,6 +54,7 @@ namespace UI
             }
         }
 
+        // update UI based on chorus state
         private void UpdateUI()
         {
             if (isChorusOn)
@@ -66,6 +69,7 @@ namespace UI
             }
         }
 
+        // toggle chorus effect on or off
         private void buttonONChorus_Click(object sender, EventArgs e)
         {
             if (isChorusOn == false)
@@ -88,6 +92,7 @@ namespace UI
             }
         }
 
+        // trackbar slider for chorus mix
         private void chorusMix_Scroll(object sender, EventArgs e)
         {
             if (chorus != null)
@@ -97,6 +102,7 @@ namespace UI
             labelValueChorusMix.Text = chorusMix.Value.ToString();
         }
 
+        // trackbar slider for chorus feedback
         private void chorusFeedback_Scroll(object sender, EventArgs e)
         {
             if (chorus != null)
@@ -106,6 +112,7 @@ namespace UI
             labelValueChorusFeedback.Text = chorusFeedback.Value.ToString();
         }
 
+        // trackbar slider for chorus rate
         private void chorusRate_Scroll(object sender, EventArgs e)
         {
             if (chorus != null)
@@ -115,6 +122,7 @@ namespace UI
             labelValueChorusRate.Text = chorusRate.Value.ToString();
         }
 
+        // trackbar slider for chorus depth
         private void chorusDepth_Scroll(object sender, EventArgs e)
         {
             if (chorus != null)
@@ -124,6 +132,7 @@ namespace UI
             labelValueChorusDepth.Text = chorusDepth.Value.ToString();
         }
 
+        // trackbar slider for chorus base delay
         private void chorusBaseDelay_Scroll(object sender, EventArgs e)
         {
             if (chorus != null)

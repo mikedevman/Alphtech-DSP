@@ -9,6 +9,7 @@ namespace AlphtechDSP
             gain = 1.0f;
         }
 
+        // sets gain scale from 0.1 to 200.0
         public void SetGain(float value)
         {
             gain = Math.Max(0.1f, Math.Min(200.0f, value));
@@ -19,8 +20,10 @@ namespace AlphtechDSP
             return gain;
         }
 
+        // processes a buffer of audio samples with gain applied
         public void Process(float[] buffer)
         {
+            // apply gain to each sample in the buffer
             for (int i = 0; i < buffer.Length; i++)
             {
                 float sample = buffer[i] * gain;

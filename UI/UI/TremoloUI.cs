@@ -21,20 +21,13 @@ namespace UI
             this.FormClosing += Tremolo_FormClosing;
         }
 
-        private void Tremolo_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (tremolo != null && isTremoloOn)
-            {
-                tremolo.SetEnabled(false);
-                isTremoloOn = false;
-            }
-        }
-
+        // set tremolo effect
         public void SetTremolo(Tremolo tremoloEffect)
         {
             tremolo = tremoloEffect;
         }
 
+        // turn tremolo effect on or off
         private void buttonONTremolo_Click(object sender, EventArgs e)
         {
             if (!isTremoloOn)
@@ -60,6 +53,7 @@ namespace UI
             }
         }
 
+        // update tremolo settings based on trackbar values
         private void UpdateTremoloSettings()
         {
             if (tremolo != null)
@@ -69,6 +63,7 @@ namespace UI
             }
         }
 
+        // trackbar to set tremolo rate
         private void rateTremolo_Scroll(object sender, EventArgs e)
         {
             if (tremolo != null)
@@ -78,6 +73,8 @@ namespace UI
             labelValueTremoloRate.Text = rateTremolo.Value.ToString();
         }
 
+
+        // trackbar to set tremolo depth
         private void depthTremolo_Scroll(object sender, EventArgs e)
         {
             if (tremolo != null)
@@ -85,6 +82,16 @@ namespace UI
                 tremolo.SetDepth(depthTremolo.Value / 100.0f);
             }
             labelValueTremoloDepth.Text = depthTremolo.Value.ToString();
+        }
+
+        // close tremolo UI and disable tremolo effect
+        private void Tremolo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (tremolo != null && isTremoloOn)
+            {
+                tremolo.SetEnabled(false);
+                isTremoloOn = false;
+            }
         }
     }
 }

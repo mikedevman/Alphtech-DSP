@@ -17,6 +17,7 @@ namespace UI
             Gain.Value = 10;
         }
 
+        // turn overdrive effect on or off
         private void buttonONOverdrive_Click(object sender, EventArgs e)
         {
             if (!isOverdriveOn)
@@ -36,6 +37,7 @@ namespace UI
             }
         }
 
+        // trackbar to set overdrive gain
         private void Gain_Scroll(object sender, EventArgs e)
         {
             float gainValue = Gain.Value / 100.0f;
@@ -51,6 +53,7 @@ namespace UI
             labelValueOverdriveGain.Text = gainValue.ToString();
         }
 
+        // close overdrive UI and disable overdrive effect
         private void OverdriveUI_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (isOverdriveOn)

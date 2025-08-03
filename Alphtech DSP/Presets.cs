@@ -31,6 +31,7 @@ namespace Alphtech_DSP
         public float Mid { get; set; }
         public float Treble { get; set; }
 
+        // constructor to initialize default values
         public Preset Clone()
         {
             return (Preset)this.MemberwiseClone();
@@ -39,6 +40,7 @@ namespace Alphtech_DSP
 
     public static class Presets
     {
+        // static method to get a preset based on the type
         public static Preset GetPreset(PresetType guitaristPreset)
         {
             switch (guitaristPreset)
@@ -47,55 +49,55 @@ namespace Alphtech_DSP
                     return new Preset
                     {
                         Type = guitaristPreset,
-                        Gain = 0.6f,
+                        Gain = 0.74f,
                         Volume = 5.0f,
-                        Bass = 0.65f,
-                        Mid = 0.6f,
-                        Treble = 0.55f,
+                        Bass = 0.45f,
+                        Mid = 0.67f,
+                        Treble = 0.56f,
                     };
 
                 case PresetType.JerryCantrell:
                     return new Preset
                     {
                         Type = guitaristPreset,
-                        Gain = 1.2f,
-                        Volume = 6.5f,
-                        Bass = 0.55f,
-                        Mid = 0.7f,
-                        Treble = 0.6f,
+                        Gain = 5.0f,
+                        Volume = 5.0f,
+                        Bass = 0.56f,
+                        Mid = 0.78f,
+                        Treble = 0.45f,
                     };
 
                 case PresetType.StevieRayVaughan:
                     return new Preset
                     {
                         Type = guitaristPreset,
-                        Gain = 1.0f,
-                        Volume = 7.0f,
-                        Bass = 0.75f,
-                        Mid = 0.65f,
-                        Treble = 0.5f
+                        Gain = 0.45f,
+                        Volume = 5.0f,
+                        Bass = 0.67f,
+                        Mid = 0.67f,
+                        Treble = 0.56f
                     };
 
                 case PresetType.CoryWong:
                     return new Preset
                     {
                         Type = guitaristPreset,
-                        Gain = 0.5f,
-                        Volume = 4.5f,
-                        Bass = 0.5f,
-                        Mid = 0.4f,
-                        Treble = 0.7f
+                        Gain = 0.23f,
+                        Volume = 5.0f,
+                        Bass = 0.34f,
+                        Mid = 0.56f,
+                        Treble = 0.67f
                     };
 
                 case PresetType.JimiHendrix:
                     return new Preset
                     {
                         Type = guitaristPreset,
-                        Gain = 1.4f,
-                        Volume = 6.0f,
-                        Bass = 0.6f,
-                        Mid = 0.55f,
-                        Treble = 0.75f
+                        Gain = 0.67f,
+                        Volume = 5.0f,
+                        Bass = 0.56f,
+                        Mid = 0.56f,
+                        Treble = 0.56f
                     };
 
                 default:
@@ -103,6 +105,7 @@ namespace Alphtech_DSP
             }
         }
 
+        // methods to save preset to a file
         public static void SavePresetToFile(Preset preset, string filePath)
         {
             using (StreamWriter writer = new StreamWriter(filePath, false))
@@ -115,21 +118,31 @@ namespace Alphtech_DSP
             }
         }
 
+        // method to load preset from a file
         public static Preset LoadPresetFromFile(string filePath)
         {
             Preset preset = new Preset();
 
+            // check if file exists
             foreach (var line in File.ReadAllLines(filePath))
             {
+                // skip empty lines and comments
                 var parts = line.Split('=');
+
+                // expect exactly two parts: key and value
                 if (parts.Length != 2) continue;
 
+                // trim whitespace and parse key-value pairs
                 string key = parts[0].Trim();
                 string value = parts[1].Trim();
 
+                // try to parse the value as a float and assign it to the corresponding property
                 if (!float.TryParse(value, out float parsedValue)) continue;
+
+                // check if the key is a valid PresetParameter
                 if (!Enum.TryParse(key, out PresetParameter parameter)) continue;
 
+                // assign the parsed value to the corresponding property in the preset
                 switch (parameter)
                 {
                     case PresetParameter.BaseGain:

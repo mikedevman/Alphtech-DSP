@@ -14,9 +14,10 @@ namespace AlphtechDSP
             overdriveEnabled = enabled;
         }
 
+        // sets the gain for the overdrive effect
         public void SetOverdriveGain(float value)
         {
-            float gainValue = 1.0f + (value * 19.0f); // maps 0.0–1.0 to 1.0–20.0
+            float gainValue = 1.0f + (value * 19.0f); 
             overdrive.SetGain(gainValue);
         }
 
@@ -25,12 +26,14 @@ namespace AlphtechDSP
             distortionEnabled = enabled;
         }
 
+        // sets the gain for the distortion effect
         public void SetDistortionGain(float value)
         {
             float gainValue = 4.0f + (value * 19.0f);
             distortion.SetGain(gainValue);
         }
 
+        // applies the gain effects to the audio buffer
         public void Process(float[] buffer)
         {
             if (overdriveEnabled)
