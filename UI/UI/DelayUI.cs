@@ -26,16 +26,6 @@ namespace UI
             this.FormClosing += DelayUI_FormClosing;
         }
 
-        // close delay UI and disable delay effect
-        private void DelayUI_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (delay != null && isDelayOn)
-            {
-                delay.SetEnabled(false);
-                isDelayOn = false;
-            }
-        }
-
         // set delay effect
         public void SetDelay(Delay delayEffect)
         {
@@ -108,6 +98,16 @@ namespace UI
                 delay.SetFeedback(feedbackDelay.Value / 100.0f);
             }
             labelValueDelayFeedback.Text = feedbackDelay.Value.ToString();
+        }
+
+        // close delay UI and disable delay effect
+        private void DelayUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (delay != null && isDelayOn)
+            {
+                delay.SetEnabled(false);
+                isDelayOn = false;
+            }
         }
     }
 }
