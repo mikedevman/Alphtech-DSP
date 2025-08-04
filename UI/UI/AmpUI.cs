@@ -518,7 +518,7 @@ namespace UI
                     amp.LoadState(preset);
                     UpdateAmpUIState();
                 }
-            }
+            }   
         }
     }
 }

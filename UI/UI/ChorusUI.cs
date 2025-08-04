@@ -34,15 +34,6 @@ namespace UI
             this.FormClosing += ChorusUI_FormClosing;
         }
 
-        // close chorus UI and disable chorus effect 
-        private void ChorusUI_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (chorus != null && isChorusOn)
-            {
-                chorus.SetEnabled(false);
-            }
-        }
-
         // set chorus effect
         public void SetChorus(Chorus chorusEffect)
         {
@@ -140,6 +131,15 @@ namespace UI
                 chorus.SetBaseDelay(chorusBaseDelay.Value / 10f);
             }
             labelValueChorusBaseDelay.Text = chorusBaseDelay.Value.ToString();
+        }
+
+        // close chorus UI and disable chorus effect 
+        private void ChorusUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (chorus != null && isChorusOn)
+            {
+                chorus.SetEnabled(false);
+            }
         }
     }
 }
